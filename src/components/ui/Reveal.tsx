@@ -5,6 +5,10 @@ import { useEffect, useRef, useState } from "react";
 /**
  * Scroll-triggered reveal. Adds a subtle fade/rise once the element enters
  * the viewport. Honors prefers-reduced-motion via CSS (see globals.css).
+ *
+ * Initial state is `false` on BOTH server and client so the SSR HTML and the
+ * first client render match exactly (avoids hydration mismatch). The element
+ * is revealed on the client via IntersectionObserver (or a rAF fallback).
  */
 export function Reveal({
   children,
@@ -16,13 +20,16 @@ export function Reveal({
   delay?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(
-    () => typeof IntersectionObserver === "undefined",
-  );
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const node = ref.current;
-    if (!node || typeof IntersectionObserver === "undefined") return;
+    if (!node) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      const id = requestAnimationFrame(() => setVisible(true));
+      return () => cancelAnimationFrame(id);
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
