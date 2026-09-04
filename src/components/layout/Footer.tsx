@@ -74,6 +74,14 @@ export function Footer() {
             Contact
           </p>
           <ul className="mt-5 space-y-2.5 text-sm">
+            <li>
+              <a
+                href={`mailto:${site.email}`}
+                className="text-stone transition-colors hover:text-ink"
+              >
+                {site.email}
+              </a>
+            </li>
             {site.phones.map((phone) => (
               <li key={phone.tel}>
                 <a

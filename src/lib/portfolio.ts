@@ -1,33 +1,133 @@
 /**
  * Portfolio project data.
  *
- * HONESTY NOTE: VIVAME Design's real project photography is not yet available.
- * These are ILLUSTRATIVE placeholder projects used to demonstrate the layout,
- * typography, and image handling. Each entry maps to an abstract placeholder
- * artwork; when real photography arrives, replace `art`/`gallery` with real
- * image paths (public/...) and update the cover `src` accordingly. The UI
- * surfaces this via an "illustrative preview" notice.
+ * HONESTY NOTE: "Sawangan Permai Residential House" features the studio's real
+ * project photography (imported from the client's gallery). The remaining
+ * projects are ILLUSTRATIVE placeholders used to demonstrate layout and
+ * typography — each maps to an abstract placeholder artwork. Replace their
+ * `coverArt`/`gallery` with real images (via the `images` field) as photography
+ * becomes available. The UI surfaces placeholder projects with an
+ * "illustrative preview" notice.
  */
+
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
 
 export interface Project {
   slug: string;
   title: string;
   category: "Residential" | "Commercial";
-  location: string; // illustrative
+  location: string; // short, for cards
   description: string;
   concept: string[];
   scope: string[];
-  /** abstract artwork variant for the cover */
-  coverArt: number;
-  /** aspect ratio for the cover, as a CSS ratio string */
-  ratio: string;
-  /** artwork variants for the detail gallery */
-  gallery: number[];
+  /** Placeholder-art projects (no real photography yet): cover variant, ratio, gallery variants */
+  coverArt?: number;
+  ratio?: string;
+  gallery?: number[];
+  /** Real project photography (first image = cover/hero) */
+  images?: ProjectImage[];
+  /** Extended metadata for real, built projects */
+  year?: string;
+  status?: string;
+  client?: string;
+  cost?: string;
+  locationFull?: string;
 }
 
 export const categories = ["All", "Residential", "Commercial"] as const;
 
 export const projects: Project[] = [
+  {
+    slug: "sawangan-permai-residential-house",
+    title: "Sawangan Permai Residential House",
+    category: "Residential",
+    location: "Sawangan, Depok",
+    locationFull: "Sawangan, Kota Depok, Jawa Barat, Indonesia",
+    year: "2019",
+    status: "Terbangun",
+    client: "Ibu Budi Astuti",
+    cost: "IDR 76 juta – 100 juta",
+    description:
+      "A complete residential interior in Sawangan Permai, Depok — an open living, dining, and kitchen core flowing into calm private bedrooms, finished with custom wardrobe joinery in the master suite.",
+    concept: [
+      "Sawangan Permai Residential House is a full-family-home interior, carried as one cohesive scheme from the open living, dining, and kitchen areas through to the private bedrooms.",
+      "Shared spaces are kept open and connected, while each bedroom holds its own quiet character — with tailored wardrobe joinery bringing considered storage to the master suite.",
+    ],
+    scope: [
+      "Interior design",
+      "Open living & dining",
+      "Kitchen design",
+      "Bedroom design",
+      "Custom wardrobe joinery",
+    ],
+    images: [
+      {
+        src: "/images/projects/sawangan-permai-residential-house/sawangan-permai-residential-house-01.jpg",
+        alt: "Dining room and kitchen — Sawangan Permai Residential House",
+        width: 1400,
+        height: 850,
+      },
+      {
+        src: "/images/projects/sawangan-permai-residential-house/sawangan-permai-residential-house-02.jpg",
+        alt: "Dining room and kitchen interior, second view",
+        width: 1400,
+        height: 850,
+      },
+      {
+        src: "/images/projects/sawangan-permai-residential-house/sawangan-permai-residential-house-03.jpg",
+        alt: "Dining room and kitchen interior, third view",
+        width: 1400,
+        height: 850,
+      },
+      {
+        src: "/images/projects/sawangan-permai-residential-house/sawangan-permai-residential-house-04.jpg",
+        alt: "Dining room and kitchen interior, fourth view",
+        width: 1364,
+        height: 850,
+      },
+      {
+        src: "/images/projects/sawangan-permai-residential-house/sawangan-permai-residential-house-05.jpg",
+        alt: "Dining room and kitchen interior, fifth view",
+        width: 1364,
+        height: 850,
+      },
+      {
+        src: "/images/projects/sawangan-permai-residential-house/sawangan-permai-residential-house-06.jpg",
+        alt: "Bedroom interior",
+        width: 1126,
+        height: 800,
+      },
+      {
+        src: "/images/projects/sawangan-permai-residential-house/sawangan-permai-residential-house-07.jpg",
+        alt: "Second bedroom interior",
+        width: 1200,
+        height: 740,
+      },
+      {
+        src: "/images/projects/sawangan-permai-residential-house/sawangan-permai-residential-house-08.jpg",
+        alt: "Third bedroom interior",
+        width: 1027,
+        height: 800,
+      },
+      {
+        src: "/images/projects/sawangan-permai-residential-house/sawangan-permai-residential-house-09.jpg",
+        alt: "Master bedroom",
+        width: 741,
+        height: 559,
+      },
+      {
+        src: "/images/projects/sawangan-permai-residential-house/sawangan-permai-residential-house-10.jpg",
+        alt: "Master bedroom wardrobe joinery",
+        width: 1200,
+        height: 800,
+      },
+    ],
+  },
   {
     slug: "the-calm-residence",
     title: "The Calm Residence",

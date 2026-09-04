@@ -59,6 +59,7 @@ const jsonLd = {
   name: site.legalName,
   description: site.description,
   url: site.siteUrl,
+  email: site.email,
   telephone: site.phones.map((p) => p.tel),
   address: {
     "@type": "PostalAddress",

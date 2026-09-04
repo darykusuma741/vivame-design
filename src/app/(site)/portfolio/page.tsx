@@ -25,7 +25,8 @@ export default function PortfolioPage() {
         <PortfolioGrid />
       </div>
       <PlaceholderNote>
-        Illustrative preview — real VIVAME project photography coming soon
+        Select projects feature real photography — others are illustrative
+        previews
       </PlaceholderNote>
     </PageIntro>
   );

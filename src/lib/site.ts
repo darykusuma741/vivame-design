@@ -25,6 +25,7 @@ interface SiteConfig {
   legalName: string;
   tagline: string;
   description: string;
+  email: string;
   /** Base URL — set NEXT_PUBLIC_SITE_URL at deploy time for canonical/OG URLs. */
   siteUrl: string;
   phones: Phone[];
@@ -48,6 +49,8 @@ export const site: SiteConfig = {
     "VIVAME Design transforms ideas into beautiful, functional, and timeless interior spaces — residential and commercial interior design, architecture, and 3D interior visualization.",
 
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+
+  email: "vivameinteriordesign@gmail.com",
 
   phones: [
     {

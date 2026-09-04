@@ -39,7 +39,8 @@ export function PortfolioSection() {
           </div>
         </Reveal>
         <PlaceholderNote>
-          Illustrative preview — real VIVAME project photography coming soon
+          Select projects feature real photography — others are illustrative
+          previews
         </PlaceholderNote>
       </div>
     </section>

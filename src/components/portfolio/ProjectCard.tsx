@@ -1,23 +1,45 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Project } from "@/lib/portfolio";
 import { PlaceholderArt } from "@/components/site/PlaceholderArt";
 
 export function ProjectCard({ project }: { project: Project }) {
+  const cover = project.images?.[0];
+
   return (
     <Link href={`/portfolio/${project.slug}`} className="group block">
       <div
         className="relative overflow-hidden bg-beige"
-        style={{ aspectRatio: project.ratio }}
+        style={cover ? undefined : { aspectRatio: project.ratio ?? "3 / 4" }}
       >
-        <PlaceholderArt
-          variant={project.coverArt}
-          label={`${project.title} — ${project.category} project`}
-          className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-        />
+        {cover ? (
+          <Image
+            src={cover.src}
+            alt={cover.alt}
+            width={cover.width}
+            height={cover.height}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          />
+        ) : (
+          <PlaceholderArt
+            variant={project.coverArt ?? 0}
+            label={`${project.title} — ${project.category} project`}
+            className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          />
+        )}
+
+        {project.status && (
+          <span className="pointer-events-none absolute right-4 top-4 bg-ink/80 px-3 py-1 text-[0.62rem] font-medium uppercase tracking-[0.18em] text-paper backdrop-blur-sm">
+            {project.status}
+          </span>
+        )}
+
         <span className="pointer-events-none absolute bottom-4 left-4 translate-y-2 bg-paper/95 px-3.5 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-ink opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
           View project
         </span>
       </div>
+
       <div className="mt-4 flex items-baseline justify-between gap-4">
         <h3 className="font-display text-[1.3rem] font-medium leading-tight text-ink">
           {project.title}
@@ -26,7 +48,10 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.category}
         </span>
       </div>
-      <p className="mt-1 text-sm text-stone">{project.location}</p>
+      <p className="mt-1 text-sm text-stone">
+        {project.location}
+        {project.year ? ` · ${project.year}` : ""}
+      </p>
     </Link>
   );
 }

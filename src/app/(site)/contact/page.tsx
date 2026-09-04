@@ -60,6 +60,16 @@ export default function ContactPage() {
             </div>
 
             <div>
+              <h2 className="eyebrow">Email</h2>
+              <a
+                href={`mailto:${site.email}`}
+                className="mt-4 inline-block text-base text-ink underline-offset-4 hover:underline"
+              >
+                {site.email}
+              </a>
+            </div>
+
+            <div>
               <h2 className="eyebrow">Studio</h2>
               <address className="mt-4 text-base not-italic leading-7 text-stone">
                 {site.location.line1}
