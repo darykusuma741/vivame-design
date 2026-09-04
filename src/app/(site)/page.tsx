@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 import { Hero } from "@/components/home/Hero";
 import { AboutSection } from "@/components/home/AboutSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
@@ -11,7 +11,7 @@ import { ContactCta } from "@/components/home/ContactCta";
 export const metadata: Metadata = {
   title: "Premium Interior Design, Architecture & 3D Visualization",
   description: site.description,
-  alternates: { canonical: site.siteUrl },
+  alternates: { canonical: absoluteUrl("/") },
 };
 
 export default function HomePage() {
