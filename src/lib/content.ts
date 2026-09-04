@@ -65,45 +65,69 @@ export const services: Service[] = [
 export interface ProcessStep {
   number: string;
   title: string;
+  /** concise label for compact rails/columns */
+  short: string;
   description: string;
+  /** index into the abstract PlaceholderArt variants */
+  art: number;
 }
 
 export const processSteps: ProcessStep[] = [
   {
     number: "01",
     title: "Consultation",
+    short: "Consultation",
     description:
-      "We listen first — your needs, habits, and aspirations for the space. Together we define the brief, scope, and budget that will guide the project.",
+      "We begin with a conversation — your needs, lifestyle, preferences, and aspirations for the space. Together we define the brief, scope, and goals that will guide the entire project.",
+    art: 0,
   },
   {
     number: "02",
-    title: "Concept Development",
+    title: "Site & Requirement Analysis",
+    short: "Site & Requirement",
     description:
-      "Mood, materiality, and spatial direction take shape as an initial concept — a clear visual language tailored to you, before any detail is fixed.",
+      "We study the existing space — its dimensions, conditions, and constraints — and translate them into clear functional requirements that the design must answer.",
+    art: 1,
   },
   {
     number: "03",
-    title: "3D Visualization",
+    title: "Concept Development",
+    short: "Concept",
     description:
-      "The concept becomes photorealistic renders and walkthroughs, so you can see and feel the finished space — and refine it — before anything is built.",
+      "The design direction takes shape: mood, spatial concept, materials, color, and furniture — a cohesive visual identity that is uniquely yours.",
+    art: 2,
   },
   {
     number: "04",
-    title: "Design Development",
+    title: "3D Visualization",
+    short: "3D Visualization",
     description:
-      "Approved ideas are resolved into precise drawings, specifications, and documentation ready for contractors, fabricators, and procurement.",
+      "The approved concept becomes photorealistic 3D visualizations, so you can clearly imagine the finished space — and refine it — long before anything is built.",
+    art: 3,
   },
   {
     number: "05",
-    title: "Implementation",
+    title: "Design Review & Revision",
+    short: "Review & Revision",
     description:
-      "We oversee the build and installation, coordinating details and materials on site to keep the result faithful to the approved design.",
+      "We present the design, listen carefully to your feedback, and refine it — adjusting details until every element feels exactly right.",
+    art: 4,
   },
   {
     number: "06",
-    title: "Final Result",
+    title: "Final Design",
+    short: "Final Design",
     description:
-      "A completed space, styled and handed over — functional, beautiful, and ready to be lived in. We finish with a final review of every detail.",
+      "Approved ideas are resolved into final drawings, details, materials, and specifications — a complete, build-ready design package.",
+    art: 5,
+  },
+  {
+    number: "07",
+    title: "Project Completion",
+    short: "Completion",
+    description:
+      "We deliver the final design package and support the handover, ensuring the project is ready for implementation and the result matches the vision.",
+    art: 6,
   },
 ];
 

@@ -8,40 +8,37 @@ export function ProcessSection() {
     <section className="border-t border-line bg-secondary">
       <div className="container-site py-24 lg:py-32">
         <Reveal>
-          <SectionHeading
-            eyebrow="How we work"
-            title={
-              <>
-                A clear, <em className="italic">considered</em> process
-              </>
-            }
-            lead="From first conversation to final result, each stage is designed to keep you informed and the outcome faithful to the vision."
-          />
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading
+              eyebrow="How we work"
+              title={
+                <>
+                  A clear, <em className="italic">considered</em> process
+                </>
+              }
+              lead="From first conversation to final handover — seven stages that keep you informed and the outcome faithful to the vision."
+            />
+            <Link
+              href="/process"
+              className="link-underline shrink-0 text-sm font-medium text-ink"
+            >
+              Explore the full process
+            </Link>
+          </div>
         </Reveal>
-        <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-          {processSteps.map((step, i) => (
-            <Reveal key={step.number} delay={(i % 3) * 60}>
-              <div className="border-t border-ink/15 pt-6">
-                <span className="font-display text-3xl font-medium text-gold-deep">
+        <Reveal delay={60}>
+          <ol className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 lg:grid-cols-7">
+            {processSteps.map((step) => (
+              <li key={step.number} className="border-t border-ink/15 pt-6">
+                <span className="font-display text-xl font-medium text-gold-deep">
                   {step.number}
                 </span>
-                <h3 className="mt-4 font-display text-2xl font-medium text-ink">
-                  {step.title}
+                <h3 className="mt-3 text-[0.82rem] font-medium uppercase tracking-[0.1em] text-ink">
+                  {step.short}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-stone">
-                  {step.description}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal delay={120}>
-          <Link
-            href="/process"
-            className="link-underline mt-14 inline-block text-sm font-medium text-ink"
-          >
-            Explore the full process
-          </Link>
+              </li>
+            ))}
+          </ol>
         </Reveal>
       </div>
     </section>
