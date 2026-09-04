@@ -9,6 +9,7 @@ import { PlaceholderNote } from "@/components/site/PlaceholderNote";
 import { Reveal } from "@/components/ui/Reveal";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
 import { ProjectGallery } from "@/components/portfolio/ProjectGallery";
+import { ShareButton } from "@/components/share/ShareButton";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -24,24 +25,38 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return {};
   const cover = project.images?.[0];
   const description = project.seoDescription ?? project.description;
+  const canonicalUrl = new URL(
+    `/portfolio/${project.slug}`,
+    site.siteUrl,
+  ).toString();
+  const shareTitle = `${project.title} — ${site.legalName}`;
+  const image = cover
+    ? {
+        url: new URL(cover.src, site.siteUrl).toString(),
+        width: cover.width,
+        height: cover.height,
+        alt: cover.alt,
+      }
+    : undefined;
+
   return {
     title: project.title,
     description,
     alternates: { canonical: `/portfolio/${project.slug}` },
-    openGraph: cover
-      ? {
-          title: `${project.title} — ${site.legalName}`,
-          description,
-          images: [
-            {
-              url: new URL(cover.src, site.siteUrl).toString(),
-              width: cover.width,
-              height: cover.height,
-              alt: cover.alt,
-            },
-          ],
-        }
-      : undefined,
+    openGraph: {
+      type: "article",
+      url: canonicalUrl,
+      siteName: site.legalName,
+      title: shareTitle,
+      description,
+      ...(image ? { images: [image] } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: shareTitle,
+      description,
+      ...(image ? { images: [image.url] } : {}),
+    },
   };
 }
 
@@ -68,6 +83,11 @@ export default async function ProjectPage({ params }: Props) {
             <h1 className="mt-5 font-display text-[clamp(2.6rem,6vw,5rem)] font-medium leading-[1.02] tracking-[-0.01em] text-ink">
               {project.title}
             </h1>
+            <ShareButton
+              subject="this project"
+              title={`${project.title} — ${site.legalName}`}
+              className="mt-7"
+            />
           </div>
           {project.description && (
             <div className="lg:col-span-5 lg:justify-self-end">
