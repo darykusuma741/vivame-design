@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { ProjectImage } from "@/lib/portfolio";
+import { withBasePath } from "@/lib/site";
 
 /**
  * ProjectGallery — an editorial grid of a project's photography with a
@@ -70,7 +71,7 @@ export function ProjectGallery({ images }: { images: ProjectImage[] }) {
             }`}
           >
             <Image
-              src={img.src}
+              src={withBasePath(img.src)}
               alt={img.alt}
               width={img.width}
               height={img.height}
@@ -176,7 +177,7 @@ export function ProjectGallery({ images }: { images: ProjectImage[] }) {
               }}
             >
               <Image
-                src={current.src}
+                src={withBasePath(current.src)}
                 alt={current.alt}
                 fill
                 sizes="92vw"

@@ -3,6 +3,9 @@
  * All values here are real studio details provided by the client.
  */
 
+/** Base path (e.g. "/repo" on a GitHub Pages project site); empty at a domain root. */
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export interface NavItem {
   href: string;
   label: string;
@@ -26,7 +29,7 @@ interface SiteConfig {
   tagline: string;
   description: string;
   email: string;
-  /** Base URL — set NEXT_PUBLIC_SITE_URL at deploy time for canonical/OG URLs. */
+  /** Public origin (scheme://host) — set NEXT_PUBLIC_SITE_URL at build time. */
   siteUrl: string;
   phones: Phone[];
   location: {
@@ -100,3 +103,15 @@ export const site: SiteConfig = {
 
   cta: { href: "/contact", label: "Start a project" },
 };
+
+/** Root-relative path with the base path prepended (e.g. "/repo/images/x.jpg"). */
+export function withBasePath(path: string): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${basePath}${normalized}`;
+}
+
+/** Absolute public URL for a path (origin + base path + path). */
+export function absoluteUrl(path = "/"): string {
+  const origin = (site.siteUrl || "").replace(/\/+$/, "");
+  return `${origin}${withBasePath(path)}`;
+}

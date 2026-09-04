@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
-import { site } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,7 +15,7 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
-const metadataBase = new URL(site.siteUrl);
+const metadataBase = new URL(absoluteUrl("/"));
 
 export const metadata: Metadata = {
   metadataBase,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: site.legalName,
     title: `${site.legalName} — Interior Design & 3D Visualization`,
     description: site.description,
-    url: "/",
+    url: absoluteUrl("/"),
     locale: "en_ID",
   },
   twitter: {
@@ -58,7 +58,7 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: site.legalName,
   description: site.description,
-  url: site.siteUrl,
+  url: absoluteUrl("/"),
   email: site.email,
   telephone: site.phones.map((p) => p.tel),
   address: {
@@ -69,7 +69,7 @@ const jsonLd = {
   },
   sameAs: site.social.map((s) => s.href),
   areaServed: "Indonesia",
-  image: `${site.siteUrl}/icon.svg`,
+  image: absoluteUrl("/icon.svg"),
 };
 
 export default function RootLayout({

@@ -19,9 +19,17 @@ export default function NotFound() {
             The page you&apos;re looking for doesn&apos;t exist or has moved.
             Let&apos;s get you back to somewhere beautiful.
           </p>
-          <Link href="/" className="btn btn-dark mt-10">
-            Back to home
-          </Link>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link href="/" className="btn btn-dark">
+              Back to home
+            </Link>
+            <Link href="/portfolio" className="btn btn-outline">
+              View portfolio
+            </Link>
+            <Link href="/contact" className="btn btn-outline">
+              Contact us
+            </Link>
+          </div>
         </div>
       </main>
       <Footer />

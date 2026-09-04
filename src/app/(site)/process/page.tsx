@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro } from "@/components/site/PageIntro";
 import { DesignProcess } from "@/components/process/DesignProcess";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Our Process",
   description:
     "How VIVAME Design works — from consultation and concept through 3D visualization, review, final design, and project completion.",
-  alternates: { canonical: "/process" },
+  alternates: { canonical: absoluteUrl("/process") },
 };
 
 export default function ProcessPage() {

@@ -1,0 +1,84 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Build and deploy on every push to the default branch.
+  push:
+    branches: [main]
+  # Allow manual runs from the Actions tab.
+  workflow_dispatch:
+
+# Allow the deployment job to write to GitHub Pages and mint an ID token.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment at a time; cancel superseded runs.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      # Compute the public URL and base path from the repository name.
+      #
+      #   - Project site  (USERNAME/repo)      -> https://USERNAME.github.io/repo,  base path /repo
+      #   - User/org site (USERNAME/USERNAME.github.io) -> https://USERNAME.github.io,      base path empty
+      #
+      # These are inlined by Next.js at build time (NEXT_PUBLIC_*).
+      - name: Configure GitHub Pages URL
+        shell: bash
+        run: |
+          OWNER="${{ github.repository_owner }}"
+          REPO="${{ github.event.repository.name }}"
+          if [ "$REPO" = "$OWNER.github.io" ]; then
+            BASE_PATH=""
+          else
+            BASE_PATH="/$REPO"
+          fi
+          # NEXT_PUBLIC_SITE_URL is always the origin (no base path); the base
+          # path is applied separately via NEXT_PUBLIC_BASE_PATH.
+          SITE_URL="https://$OWNER.github.io"
+          echo "NEXT_PUBLIC_BASE_PATH=$BASE_PATH" >> "$GITHUB_ENV"
+          echo "NEXT_PUBLIC_SITE_URL=$SITE_URL" >> "$GITHUB_ENV"
+          echo "Base path: '$BASE_PATH'"
+          echo "Site URL:  '$SITE_URL'"
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

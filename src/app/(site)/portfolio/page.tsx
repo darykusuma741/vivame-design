@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { PageIntro } from "@/components/site/PageIntro";
 import { PortfolioGrid } from "@/components/portfolio/PortfolioGrid";
 import { PlaceholderNote } from "@/components/site/PlaceholderNote";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
     "An editorial selection of VIVAME Design interior and architecture projects — residential and commercial spaces, concept to render.",
-  alternates: { canonical: "/portfolio" },
+  alternates: { canonical: absoluteUrl("/portfolio") },
 };
 
 export default function PortfolioPage() {

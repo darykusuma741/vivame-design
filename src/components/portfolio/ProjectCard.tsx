@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "@/lib/portfolio";
+import { withBasePath } from "@/lib/site";
 import { PlaceholderArt } from "@/components/site/PlaceholderArt";
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -14,7 +15,7 @@ export function ProjectCard({ project }: { project: Project }) {
       >
         {cover ? (
           <Image
-            src={cover.src}
+            src={withBasePath(cover.src)}
             alt={cover.alt}
             width={cover.width}
             height={cover.height}

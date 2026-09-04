@@ -4,12 +4,13 @@ import { PlaceholderArt } from "@/components/site/PlaceholderArt";
 import { PlaceholderNote } from "@/components/site/PlaceholderNote";
 import { Reveal } from "@/components/ui/Reveal";
 import { whyItems } from "@/lib/content";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
   description:
     "About VIVAME Design — an interior design, architecture, and 3D visualization studio crafting considered, timeless spaces.",
-  alternates: { canonical: "/about" },
+  alternates: { canonical: absoluteUrl("/about") },
 };
 
 export default function AboutPage() {

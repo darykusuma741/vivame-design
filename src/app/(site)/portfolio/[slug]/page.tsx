@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProject, projects } from "@/lib/portfolio";
-import { site } from "@/lib/site";
+import { absoluteUrl, site, withBasePath } from "@/lib/site";
 import { PlaceholderArt } from "@/components/site/PlaceholderArt";
 import { PlaceholderNote } from "@/components/site/PlaceholderNote";
 import { Reveal } from "@/components/ui/Reveal";
@@ -25,14 +25,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return {};
   const cover = project.images?.[0];
   const description = project.seoDescription ?? project.description;
-  const canonicalUrl = new URL(
-    `/portfolio/${project.slug}`,
-    site.siteUrl,
-  ).toString();
+  const canonicalUrl = absoluteUrl(`/portfolio/${project.slug}`);
   const shareTitle = `${project.title} — ${site.legalName}`;
   const image = cover
     ? {
-        url: new URL(cover.src, site.siteUrl).toString(),
+        url: absoluteUrl(cover.src),
         width: cover.width,
         height: cover.height,
         alt: cover.alt,
@@ -42,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: project.title,
     description,
-    alternates: { canonical: `/portfolio/${project.slug}` },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       type: "article",
       url: canonicalUrl,
@@ -70,8 +67,32 @@ export default async function ProjectPage({ params }: Props) {
   const cover = project.images?.[0];
   const gallery = project.images ? project.images.slice(1) : undefined;
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Portfolio",
+        item: absoluteUrl("/portfolio"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title,
+        item: absoluteUrl(`/portfolio/${project.slug}`),
+      },
+    ],
+  };
+
   return (
     <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       {/* Hero */}
       <section className="container-site pt-[clamp(2rem,6vw,4rem)]">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
@@ -105,7 +126,7 @@ export default async function ProjectPage({ params }: Props) {
                 style={{ aspectRatio: "16 / 10" }}
               >
                 <Image
-                  src={cover.src}
+                  src={withBasePath(cover.src)}
                   alt={cover.alt}
                   fill
                   priority

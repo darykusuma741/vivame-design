@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
+import { site, absoluteUrl } from "@/lib/site";
 import { PageIntro } from "@/components/site/PageIntro";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { Reveal } from "@/components/ui/Reveal";
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Start a Project",
   description:
     "Contact VIVAME Design for interior design, architecture, and 3D visualization — WhatsApp, phone, or visit our studio in Sawangan, Depok.",
-  alternates: { canonical: "/contact" },
+  alternates: { canonical: absoluteUrl("/contact") },
 };
 
 export default function ContactPage() {
