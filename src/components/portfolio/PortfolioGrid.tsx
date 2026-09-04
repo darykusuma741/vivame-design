@@ -1,0 +1,50 @@
+"use client";
+
+import { useState } from "react";
+import { categories, projects } from "@/lib/portfolio";
+import { ProjectCard } from "@/components/portfolio/ProjectCard";
+
+export function PortfolioGrid() {
+  const [active, setActive] = useState<string>("All");
+  const filtered =
+    active === "All"
+      ? projects
+      : projects.filter((p) => p.category === active);
+
+  return (
+    <div>
+      <div
+        role="group"
+        aria-label="Filter projects by category"
+        className="flex flex-wrap gap-2"
+      >
+        {categories.map((category) => {
+          const selected = active === category;
+          return (
+            <button
+              key={category}
+              type="button"
+              onClick={() => setActive(category)}
+              aria-pressed={selected}
+              className={`border px-5 py-2.5 text-[0.72rem] font-medium uppercase tracking-[0.16em] transition-colors ${
+                selected
+                  ? "border-ink bg-ink text-paper"
+                  : "border-line text-stone hover:border-ink hover:text-ink"
+              }`}
+            >
+              {category}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="mt-10 columns-1 gap-8 sm:columns-2 lg:columns-3">
+        {filtered.map((project) => (
+          <div key={project.slug} className="mb-8 break-inside-avoid">
+            <ProjectCard project={project} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Geist } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -15,9 +15,12 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
+const metadataBase = new URL(site.siteUrl);
+
 export const metadata: Metadata = {
+  metadataBase,
   title: {
-    default: site.legalName,
+    default: `${site.legalName} — Interior Design & 3D Visualization`,
     template: `%s — ${site.legalName}`,
   },
   description: site.description,
@@ -26,13 +29,46 @@ export const metadata: Metadata = {
     "interior design",
     "architecture",
     "3D visualization",
-    "3D interior rendering",
+    "interior design Depok",
+    "interior design Indonesia",
     "VIVAME Design",
   ],
+  openGraph: {
+    type: "website",
+    siteName: site.legalName,
+    title: `${site.legalName} — Interior Design & 3D Visualization`,
+    description: site.description,
+    url: "/",
+    locale: "en_ID",
+  },
+  twitter: {
+    card: "summary",
+    title: `${site.legalName} — Interior Design & 3D Visualization`,
+    description: site.description,
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#faf8f4",
+  themeColor: "#ffffff",
+};
+
+// Structured data: factual studio details only (no invented ratings/stats).
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: site.legalName,
+  description: site.description,
+  url: site.siteUrl,
+  telephone: site.phones.map((p) => p.tel),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: `${site.location.line1}, ${site.location.line2}`,
+    addressLocality: site.location.city,
+    addressCountry: site.location.country,
+  },
+  sameAs: site.social.map((s) => s.href),
+  areaServed: "Indonesia",
+  image: `${site.siteUrl}/icon.svg`,
 };
 
 export default function RootLayout({
@@ -41,9 +77,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${cormorant.variable} antialiased`}
+      data-scroll-behavior="smooth"
+      className={`${inter.variable} ${cormorant.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

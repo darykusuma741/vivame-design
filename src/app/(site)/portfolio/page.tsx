@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { PageIntro } from "@/components/site/PageIntro";
+import { PortfolioGrid } from "@/components/portfolio/PortfolioGrid";
 import { PlaceholderNote } from "@/components/site/PlaceholderNote";
 
 export const metadata: Metadata = {
-  title: "Selected Work",
+  title: "Portfolio",
   description:
-    "An editorial selection of VIVAME Design interior and architecture projects — concept notes, photography, and renders.",
+    "An editorial selection of VIVAME Design interior and architecture projects — residential and commercial spaces, concept to render.",
+  alternates: { canonical: "/portfolio" },
 };
 
 export default function PortfolioPage() {
@@ -17,11 +19,13 @@ export default function PortfolioPage() {
           Selected <em className="italic">work</em>
         </>
       }
-      lead="A curated look at the spaces VIVAME Design has shaped — residential interiors, architectural projects, and the renders that brought them to life. Each project will open into its own story: concept, materiality, and process."
+      lead="A curated look at the spaces VIVAME Design has shaped — residential interiors, commercial environments, and the renders that bring each idea to life."
     >
+      <div className="mt-14">
+        <PortfolioGrid />
+      </div>
       <PlaceholderNote>
-        Project gallery in preparation — real VIVAME photography & renders
-        coming soon
+        Illustrative preview — real VIVAME project photography coming soon
       </PlaceholderNote>
     </PageIntro>
   );

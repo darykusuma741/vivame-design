@@ -16,7 +16,7 @@ export function Header() {
   const toggleRef = useRef<HTMLButtonElement>(null);
   const didOpen = useRef(false);
 
-  // Body scroll lock + Escape-to-close while the mobile menu is open.
+  // Body scroll lock + Escape-to-close while the menu is open.
   useEffect(() => {
     if (!open) return;
     const previous = document.body.style.overflow;
@@ -42,23 +42,23 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur-md">
       <div className="container-site flex h-16 items-center justify-between gap-6 md:h-20">
         <Link
           href="/"
-          className="inline-flex items-baseline gap-[0.7em] text-ink"
+          className="inline-flex items-baseline gap-2.5 text-ink"
           aria-label="VIVAME Design — home"
         >
-          <span className="text-[0.95rem] font-semibold uppercase tracking-[0.34em]">
+          <span className="font-display text-[1.5rem] font-semibold tracking-[0.04em]">
             {site.name}
           </span>
-          <span className="hidden text-[0.62rem] font-medium uppercase tracking-[0.3em] text-faint sm:inline">
+          <span className="hidden text-[0.6rem] font-medium uppercase tracking-[0.3em] text-stone sm:inline">
             Design
           </span>
         </Link>
 
         {/* Desktop navigation */}
-        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-7 xl:flex">
           {site.nav.map((item) => {
             const active = isActivePath(pathname, item.href);
             return (
@@ -66,7 +66,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`relative py-2 text-[0.8rem] font-medium uppercase tracking-[0.16em] transition-colors ${
+                className={`relative py-2 text-[0.78rem] font-medium uppercase tracking-[0.14em] transition-colors ${
                   active ? "text-ink" : "text-stone hover:text-ink"
                 }`}
               >
@@ -80,7 +80,7 @@ export function Header() {
               </Link>
             );
           })}
-          <Link href={site.cta.href} className="btn btn-dark">
+          <Link href={site.cta.href} className="btn btn-dark btn-sm ml-1">
             {site.cta.label}
           </Link>
         </nav>
@@ -89,7 +89,7 @@ export function Header() {
         <button
           ref={toggleRef}
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink xl:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -117,12 +117,15 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile navigation */}
+      {/* Mobile navigation — animated height + visibility */}
       <nav
         id="mobile-menu"
         aria-label="Mobile"
-        hidden={!open}
-        className="border-t border-line bg-paper md:hidden"
+        className={`overflow-hidden border-line transition-all duration-300 ease-in-out xl:hidden ${
+          open
+            ? "visible max-h-[520px] border-t opacity-100"
+            : "invisible max-h-0 opacity-0"
+        }`}
       >
         <div className="container-site flex flex-col py-4">
           {site.nav.map((item) => {
@@ -133,7 +136,7 @@ export function Header() {
                 href={item.href}
                 onClick={close}
                 aria-current={active ? "page" : undefined}
-                className={`border-b border-line/70 py-4 text-[0.95rem] font-medium uppercase tracking-[0.16em] ${
+                className={`border-b border-line py-4 text-[0.95rem] font-medium uppercase tracking-[0.14em] ${
                   active ? "text-ink" : "text-stone"
                 }`}
               >
@@ -141,11 +144,7 @@ export function Header() {
               </Link>
             );
           })}
-          <Link
-            href={site.cta.href}
-            onClick={close}
-            className="btn btn-dark mt-6"
-          >
+          <Link href={site.cta.href} onClick={close} className="btn btn-dark mt-6">
             {site.cta.label}
           </Link>
         </div>

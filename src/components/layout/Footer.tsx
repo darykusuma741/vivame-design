@@ -1,37 +1,46 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { services } from "@/lib/content";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const primary = site.phones[0];
 
   return (
-    <footer className="bg-ink text-paper">
-      <div className="container-site grid gap-12 py-16 md:grid-cols-12 md:py-20">
-        {/* Brand */}
-        <div className="md:col-span-5">
-          <p className="font-display text-4xl font-medium tracking-wide">
+    <footer className="border-t border-line bg-secondary">
+      <div className="container-site grid gap-12 py-16 md:grid-cols-2 md:py-20 lg:grid-cols-12">
+        {/* Brand + address */}
+        <div className="lg:col-span-4">
+          <p className="font-display text-3xl font-semibold tracking-[0.04em] text-ink">
             {site.name}
           </p>
-          <p className="mt-2 text-[0.65rem] font-medium uppercase tracking-[0.34em] text-paper/50">
+          <p className="mt-1 text-[0.62rem] font-medium uppercase tracking-[0.32em] text-stone">
             Design Studio
           </p>
-          <p className="mt-6 max-w-sm text-sm leading-6 text-paper/70">
+          <p className="mt-6 max-w-sm text-sm leading-6 text-stone">
             Interior design, architecture, and 3D interior visualization —
-            refined, intentional spaces from first sketch to final render.
+            beautiful, functional, and timeless spaces.
           </p>
+          <address className="mt-6 text-sm not-italic leading-6 text-stone">
+            {site.location.line1}
+            <br />
+            {site.location.line2}
+            <br />
+            {site.location.city}, {site.location.country}
+          </address>
         </div>
 
-        {/* Sitemap */}
-        <nav aria-label="Footer" className="md:col-span-3">
-          <p className="text-[0.7rem] font-medium uppercase tracking-[0.32em] text-paper/50">
+        {/* Explore */}
+        <nav aria-label="Footer" className="lg:col-span-2">
+          <p className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-ink">
             Explore
           </p>
-          <ul className="mt-5 space-y-1">
+          <ul className="mt-5 space-y-2.5">
             {site.nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-block py-1 text-sm text-paper/80 transition-colors hover:text-paper"
+                  className="text-sm text-stone transition-colors hover:text-ink"
                 >
                   {item.label}
                 </Link>
@@ -40,62 +49,85 @@ export function Footer() {
           </ul>
         </nav>
 
-        {/* Contact — values only render once real details are configured */}
-        <div className="md:col-span-4">
-          <p className="text-[0.7rem] font-medium uppercase tracking-[0.32em] text-paper/50">
+        {/* Services */}
+        <nav aria-label="Services" className="lg:col-span-3">
+          <p className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-ink">
+            Services
+          </p>
+          <ul className="mt-5 space-y-2.5">
+            {services.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href="/services"
+                  className="text-sm text-stone transition-colors hover:text-ink"
+                >
+                  {service.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Contact + social */}
+        <div className="lg:col-span-3">
+          <p className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-ink">
             Contact
           </p>
-          <ul className="mt-5 space-y-1 text-sm">
-            {site.contact.email && (
-              <li>
+          <ul className="mt-5 space-y-2.5 text-sm">
+            {site.phones.map((phone) => (
+              <li key={phone.tel}>
                 <a
-                  href={`mailto:${site.contact.email}`}
-                  className="inline-block py-1 text-paper/80 underline-offset-4 transition-colors hover:text-paper hover:underline"
+                  href={`tel:${phone.tel}`}
+                  className="text-stone transition-colors hover:text-ink"
                 >
-                  {site.contact.email}
+                  {phone.display}
                 </a>
               </li>
-            )}
-            {site.contact.instagram && (
-              <li>
-                <a
-                  href={site.contact.instagram}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  className="inline-block py-1 text-paper/80 transition-colors hover:text-paper"
-                >
-                  Instagram
-                </a>
-              </li>
-            )}
-            {site.contact.whatsapp && (
-              <li>
-                <a
-                  href={`https://wa.me/${site.contact.whatsapp.replace(/\D/g, "")}`}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  className="inline-block py-1 text-paper/80 transition-colors hover:text-paper"
-                >
-                  WhatsApp
-                </a>
-              </li>
-            )}
+            ))}
+            <li>
+              <a
+                href={primary.wa}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone transition-colors hover:text-ink"
+              >
+                WhatsApp
+              </a>
+            </li>
+            <li>
+              <a
+                href={site.location.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone transition-colors hover:text-ink"
+              >
+                View on Google Maps
+              </a>
+            </li>
           </ul>
-          <p className="mt-6 max-w-xs text-xs leading-5 text-paper/40">
-            Development preview — contact details and portfolio imagery are
-            placeholders until the studio&apos;s real content is added.
-          </p>
+
+          <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+            {site.social.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-stone transition-colors hover:text-ink"
+              >
+                {social.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="border-t border-paper/10">
-        <div className="container-site flex flex-col gap-2 py-6 text-xs text-paper/50 sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-t border-line">
+        <div className="container-site flex flex-col gap-2 py-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {site.legalName}. All rights reserved.
           </p>
-          <p className="text-paper/35">
-            Interior design · Architecture · 3D Visualization
-          </p>
+          <p>{site.tagline}</p>
         </div>
       </div>
     </footer>

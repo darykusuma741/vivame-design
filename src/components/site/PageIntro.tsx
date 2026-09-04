@@ -10,7 +10,7 @@ export function PageIntro({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="container-site pt-[clamp(4rem,10vw,7.5rem)]">
+    <section className="container-site pb-24 pt-[clamp(4rem,10vw,7.5rem)] lg:pb-32">
       <p className="eyebrow">{eyebrow}</p>
       <h1 className="mt-5 max-w-[18ch] font-display text-[clamp(2.6rem,7vw,5.5rem)] font-medium leading-[1.02] tracking-[-0.01em] text-ink">
         {title}

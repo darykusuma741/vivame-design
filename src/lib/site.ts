@@ -1,10 +1,6 @@
 /**
  * Central site configuration for VIVAME Design.
- *
- * NOTE ON PLACEHOLDERS: Real contact details / social handles are not yet
- * available. Values marked PLACEHOLDER below must be replaced before launch —
- * they use reserved `.example` domains or empty strings so nothing fake is
- * presented to visitors. Empty values are not rendered.
+ * All values here are real studio details provided by the client.
  */
 
 export interface NavItem {
@@ -12,16 +8,34 @@ export interface NavItem {
   label: string;
 }
 
+export interface Phone {
+  label: string;
+  display: string;
+  tel: string; // E.164 for tel: links
+  wa: string; // wa.me deep link
+}
+
+export interface SocialLink {
+  label: string;
+  href: string;
+}
+
 interface SiteConfig {
   name: string;
   legalName: string;
   tagline: string;
   description: string;
-  contact: {
-    email: string; // PLACEHOLDER — reserved .example domain
-    instagram: string; // PLACEHOLDER — e.g. "https://instagram.com/vivame.design"
-    whatsapp: string; // PLACEHOLDER — e.g. "+62 812 0000 0000"
+  /** Base URL — set NEXT_PUBLIC_SITE_URL at deploy time for canonical/OG URLs. */
+  siteUrl: string;
+  phones: Phone[];
+  location: {
+    line1: string;
+    line2: string;
+    city: string;
+    country: string;
+    mapsUrl: string;
   };
+  social: SocialLink[];
   nav: NavItem[];
   cta: NavItem;
 }
@@ -31,19 +45,53 @@ export const site: SiteConfig = {
   legalName: "VIVAME Design",
   tagline: "Interior Design · Architecture · 3D Visualization",
   description:
-    "VIVAME Design is an interior design, architecture, and 3D interior visualization studio crafting refined, intentional spaces — from first sketch to final render.",
+    "VIVAME Design transforms ideas into beautiful, functional, and timeless interior spaces — residential and commercial interior design, architecture, and 3D interior visualization.",
 
-  // PLACEHOLDER — replace with the real studio contact details before launch.
-  contact: {
-    email: "hello@vivame-design.example", // PLACEHOLDER — reserved .example domain
-    instagram: "", // PLACEHOLDER — e.g. "https://instagram.com/vivame.design"
-    whatsapp: "", // PLACEHOLDER — e.g. "+62 812 0000 0000"
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+
+  phones: [
+    {
+      label: "Primary",
+      display: "+62 857-7305-7532",
+      tel: "+6285773057532",
+      wa: "https://wa.me/6285773057532",
+    },
+    {
+      label: "Secondary",
+      display: "+62 882-4608-1309",
+      tel: "+6288246081309",
+      wa: "https://wa.me/6288246081309",
+    },
+  ],
+
+  location: {
+    line1: "Jl. Deposito No. A 19/20",
+    line2: "Komplek BDN",
+    city: "Sawangan, Depok",
+    country: "Indonesia",
+    mapsUrl: "https://maps.app.goo.gl/1mSXVdxCZ3Z6vzWFA",
   },
 
+  social: [
+    { label: "Instagram", href: "https://www.instagram.com/vivamedesign/" },
+    {
+      label: "Facebook",
+      href: "https://www.facebook.com/p/Vivame-Interior-Design-100063437935234/",
+    },
+    { label: "Archify", href: "https://www.archify.com/id/vivame-design" },
+    { label: "Arsitag", href: "https://www.arsitag.com/profile/vivame-design" },
+    {
+      label: "Homify",
+      href: "https://www.homify.co.id/professionals/4815776/vivame-design",
+    },
+  ],
+
   nav: [
-    { href: "/portfolio", label: "Work" },
-    { href: "/services", label: "Services" },
+    { href: "/", label: "Home" },
     { href: "/about", label: "About" },
+    { href: "/services", label: "Services" },
+    { href: "/portfolio", label: "Portfolio" },
+    { href: "/process", label: "Process" },
     { href: "/contact", label: "Contact" },
   ],
 
