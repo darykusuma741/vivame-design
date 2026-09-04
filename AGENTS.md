@@ -57,30 +57,37 @@ vivame-design/
 ├── tsconfig.json
 └── src/
     ├── lib/
-    │   └── site.ts          # central site config — brand, nav, CONTACT PLACEHOLDERS
+    │   ├── site.ts          # brand, nav, phones, WhatsApp, address, social links
+    │   ├── content.ts       # services, process steps, why-VIVAME
+    │   └── portfolio.ts     # project data (illustrative placeholders)
     ├── components/
-    │   ├── layout/          # Header (client: mobile menu), Footer (server)
-    │   └── site/            # PageIntro, PlaceholderNote
+    │   ├── layout/          # Header (client: nav + animated mobile menu), Footer
+    │   ├── home/            # Hero, About, Services, Portfolio, Process, Why, ContactCta
+    │   ├── portfolio/       # ProjectCard, PortfolioGrid (client category filter)
+    │   ├── contact/         # ContactForm (client, validates → WhatsApp handoff)
+    │   ├── site/            # PlaceholderArt, SectionHeading, PageIntro, PlaceholderNote
+    │   └── ui/              # Reveal (scroll-reveal, motion-safe)
     └── app/
-        ├── layout.tsx       # root: fonts (Geist + Cormorant Garamond), metadata
-        ├── globals.css      # Tailwind import + design tokens (@theme) + base styles
+        ├── layout.tsx       # root: fonts (Inter + Cormorant Garamond), metadata, JSON-LD
+        ├── globals.css      # design tokens (@theme) + base/component styles
         ├── icon.svg         # brand favicon
-        └── (site)/          # marketing route group — shell layout w/ header+footer
+        ├── sitemap.ts / robots.ts / not-found.tsx
+        └── (site)/          # shell layout: skip link + Header + Footer
             ├── layout.tsx
             ├── page.tsx     # home (/)
-            ├── portfolio/   # selected work (gallery pending)
-            ├── services/
-            ├── about/
-            └── contact/
+            ├── about/ · services/ · process/ · contact/
+            └── portfolio/   # index + [slug] detail (SSG via generateStaticParams)
 ```
 
-Design tokens live in `src/app/globals.css` (`@theme`): surfaces `paper/surface/cream`,
-text `ink/stone/faint`, hairline `line`, bronze accent `brass/brass-deep`. Typography:
-serif display (Cormorant Garamond, `font-display`) over Geist sans (`font-sans`).
-Utilities: `.container-site`, `.eyebrow`, `.btn` (`.btn-dark`, `.btn-outline`),
-`.skip-link`. Placeholder content (contact details, imagery) is centralized in
-`src/lib/site.ts` and marked via the `PlaceholderNote` component — never present
-fabricated details as real.
+Design tokens live in `src/app/globals.css` (`@theme`): surfaces
+`paper/secondary/soft`, text `ink/stone/faint`, hairline `line`, warm `beige`
+`#e8ded2`, accent `gold` `#b89b72` + text-safe `gold-deep` `#7a5f38`. Typography:
+serif display (Cormorant Garamond, `font-display`) over Inter (`font-sans`).
+Utilities: `.container-site`, `.eyebrow`, `.btn` (`.btn-dark`, `.btn-outline`,
+`.btn-light`, `.btn-sm`, `.btn-outline-light`), `.link-underline`, `.skip-link`,
+`.reveal`. Real photography is not yet available — `PlaceholderArt` renders abstract
+SVG artwork as a clearly-marked stand-in; swap it for `<Image>` with real files when
+they arrive (data in `src/lib/portfolio.ts`).
 
 ## 5. Conventions
 
@@ -90,8 +97,10 @@ fabricated details as real.
 - **Styling**: Tailwind utilities in JSX; shared design tokens as CSS variables in
   `globals.css` `@theme`. No inline `style` except dynamic values. No UI kit — VIVAME
   Design gets bespoke, refined components.
-- **Imagery**: use `next/image` everywhere (responsive, lazy, modern formats). Never
-  plain `<img>` for project/portfolio imagery. Portfolio images are primary content.
+- **Imagery**: real images use `next/image` (responsive, lazy, modern formats).
+  Real photography is not yet available — use `PlaceholderArt` (abstract SVG) as a
+  clearly-marked stand-in and swap for `<Image>` when files arrive. Portfolio images
+  are primary content.
 - **Metadata**: every route exports `Metadata` (title, description, OpenGraph).
 - **Accessibility**: semantic HTML, labels on all inputs, visible focus states,
   keyboard operability, `prefers-reduced-motion` respected.

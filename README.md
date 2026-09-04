@@ -40,7 +40,8 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Status
 
-**Phase 1 (design system & shell) — in progress.** Editorial token system,
-brand typography, global header/footer shell, and route structure are in place;
-section pages carry clearly marked placeholder content awaiting real VIVAME
-imagery and details.
+**Redesigned & production-ready (static).** Premium editorial design system
+(white/neutral + muted gold), 6-page site with portfolio gallery + detail pages,
+accessible contact form (WhatsApp handoff), SEO (sitemap/robots/JSON-LD), and an
+honest abstract-artwork placeholder strategy awaiting real VIVAME photography.
+`npm run lint` and `npm run build` pass.
