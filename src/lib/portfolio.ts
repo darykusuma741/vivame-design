@@ -22,9 +22,9 @@ export interface Project {
   title: string;
   category: "Residential" | "Commercial";
   location: string; // short, for cards
-  description: string;
-  concept: string[];
-  scope: string[];
+  description?: string;
+  concept?: string[];
+  scope?: string[];
   /** Placeholder-art projects (no real photography yet): cover variant, ratio, gallery variants */
   coverArt?: number;
   ratio?: string;
@@ -198,6 +198,63 @@ export const projects: Project[] = [
         src: "/images/projects/evergreen-salon-south-jakarta/evergreen-salon-south-jakarta-08.jpg",
         alt: "Evergreen Salon interior, eighth view",
         width: 2000,
+        height: 1200,
+      },
+    ],
+  },
+  {
+    slug: "cafe-cake",
+    title: "Cafe Cake",
+    category: "Commercial",
+    categoryLabel: "Commercial / Cafe",
+    location: "Malang",
+    locationFull: "Malang, Kota Malang, Jawa Timur, Indonesia",
+    year: "2019",
+    status: "Terbangun",
+    cost: "IDR 101 juta - 250 juta",
+    seoDescription:
+      "Commercial café interior design by VIVAME Design in Malang, Jawa Timur — completed in 2019.",
+    images: [
+      {
+        src: "/images/projects/cafe-cake/cafe-cake-01.jpg",
+        alt: "Café interior of Cafe Cake — Malang, Jawa Timur",
+        width: 1800,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/cafe-cake/cafe-cake-02.jpg",
+        alt: "Cafe Cake café interior, second view",
+        width: 1710,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/cafe-cake/cafe-cake-03.jpg",
+        alt: "Cafe Cake café interior, third view",
+        width: 1800,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/cafe-cake/cafe-cake-04.jpg",
+        alt: "Cafe Cake café interior, fourth view",
+        width: 1800,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/cafe-cake/cafe-cake-05.jpg",
+        alt: "Cafe Cake café interior, fifth view",
+        width: 1800,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/cafe-cake/cafe-cake-06.jpg",
+        alt: "Cafe Cake café interior, sixth view",
+        width: 1800,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/cafe-cake/cafe-cake-07.jpg",
+        alt: "Cafe Cake café interior, seventh view",
+        width: 1800,
         height: 1200,
       },
     ],

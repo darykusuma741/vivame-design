@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }: Props) {
       {/* Hero */}
       <section className="container-site pt-[clamp(2rem,6vw,4rem)]">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7">
+          <div className={project.description ? "lg:col-span-7" : "lg:col-span-12"}>
             <p className="eyebrow">
               {project.categoryLabel ?? project.category} · {project.location}
               {project.year ? ` · ${project.year}` : ""}
@@ -69,11 +69,13 @@ export default async function ProjectPage({ params }: Props) {
               {project.title}
             </h1>
           </div>
-          <div className="lg:col-span-5 lg:justify-self-end">
-            <p className="max-w-[46ch] text-base leading-7 text-stone">
-              {project.description}
-            </p>
-          </div>
+          {project.description && (
+            <div className="lg:col-span-5 lg:justify-self-end">
+              <p className="max-w-[46ch] text-base leading-7 text-stone">
+                {project.description}
+              </p>
+            </div>
+          )}
         </div>
         <Reveal>
           <div className="mt-12">
@@ -142,26 +144,30 @@ export default async function ProjectPage({ params }: Props) {
                 <dd className="mt-2 text-sm text-ink">{project.cost}</dd>
               </div>
             )}
-            <div>
-              <dt className="eyebrow">Scope</dt>
-              <dd className="mt-2">
-                <ul className="space-y-1.5 text-sm text-ink">
-                  {project.scope.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </dd>
-            </div>
+            {project.scope && project.scope.length > 0 && (
+              <div>
+                <dt className="eyebrow">Scope</dt>
+                <dd className="mt-2">
+                  <ul className="space-y-1.5 text-sm text-ink">
+                    {project.scope.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            )}
           </dl>
         </aside>
-        <div className="lg:col-span-8">
-          <h2 className="eyebrow">Design concept</h2>
-          <div className="mt-6 space-y-5 text-base leading-7 text-stone sm:text-lg sm:leading-8">
-            {project.concept.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
-            ))}
+        {project.concept && project.concept.length > 0 && (
+          <div className="lg:col-span-8">
+            <h2 className="eyebrow">Design concept</h2>
+            <div className="mt-6 space-y-5 text-base leading-7 text-stone sm:text-lg sm:leading-8">
+              {project.concept.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* Gallery */}
