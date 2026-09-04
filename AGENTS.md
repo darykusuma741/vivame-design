@@ -55,33 +55,32 @@ vivame-design/
 ├── postcss.config.mjs
 ├── eslint.config.mjs
 ├── tsconfig.json
-├── public/               # static assets served at /
 └── src/
-    └── app/              # App Router routes
-        ├── layout.tsx    # root layout: fonts, metadata, global shell
-        ├── page.tsx      # home route (/)
-        ├── globals.css   # Tailwind import + design tokens
-        └── favicon.ico
+    ├── lib/
+    │   └── site.ts          # central site config — brand, nav, CONTACT PLACEHOLDERS
+    ├── components/
+    │   ├── layout/          # Header (client: mobile menu), Footer (server)
+    │   └── site/            # PageIntro, PlaceholderNote
+    └── app/
+        ├── layout.tsx       # root: fonts (Geist + Cormorant Garamond), metadata
+        ├── globals.css      # Tailwind import + design tokens (@theme) + base styles
+        ├── icon.svg         # brand favicon
+        └── (site)/          # marketing route group — shell layout w/ header+footer
+            ├── layout.tsx
+            ├── page.tsx     # home (/)
+            ├── portfolio/   # selected work (gallery pending)
+            ├── services/
+            ├── about/
+            └── contact/
 ```
 
-Planned additions (Phase 1+, update this file as they land):
-
-```text
-src/
-├── app/
-│   ├── (site)/            # marketing pages group (layout with nav/footer)
-│   │   ├── page.tsx       # home
-│   │   ├── portfolio/     # work grid + [slug] detail
-│   │   ├── services/
-│   │   ├── about/
-│   │   └── contact/
-│   ├── api/contact/       # validated contact endpoint (if backend needed)
-│   └── sitemap.ts, robots.ts, icon...
-├── components/            # design-system components (ui/, layout/, portfolio/)
-├── lib/                   # data, utils, site config
-├── content/               # portfolio project data + images
-└── styles/                # tokens, fonts, global css (if split out)
-```
+Design tokens live in `src/app/globals.css` (`@theme`): surfaces `paper/surface/cream`,
+text `ink/stone/faint`, hairline `line`, bronze accent `brass/brass-deep`. Typography:
+serif display (Cormorant Garamond, `font-display`) over Geist sans (`font-sans`).
+Utilities: `.container-site`, `.eyebrow`, `.btn` (`.btn-dark`, `.btn-outline`),
+`.skip-link`. Placeholder content (contact details, imagery) is centralized in
+`src/lib/site.ts` and marked via the `PlaceholderNote` component — never present
+fabricated details as real.
 
 ## 5. Conventions
 

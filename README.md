@@ -40,4 +40,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Status
 
-Phase 0 (foundations) — scaffolded, awaiting content & design-system work.
+**Phase 1 (design system & shell) — in progress.** Editorial token system,
+brand typography, global header/footer shell, and route structure are in place;
+section pages carry clearly marked placeholder content awaiting real VIVAME
+imagery and details.
