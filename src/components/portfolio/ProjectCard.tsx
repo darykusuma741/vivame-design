@@ -45,7 +45,7 @@ export function ProjectCard({ project }: { project: Project }) {
           {project.title}
         </h3>
         <span className="shrink-0 text-[0.66rem] font-medium uppercase tracking-[0.2em] text-faint">
-          {project.category}
+          {project.categoryLabel ?? project.category}
         </span>
       </div>
       <p className="mt-1 text-sm text-stone">

@@ -37,6 +37,10 @@ export interface Project {
   client?: string;
   cost?: string;
   locationFull?: string;
+  /** display label for category (e.g. "Commercial / Salon"); defaults to `category` */
+  categoryLabel?: string;
+  /** English SEO meta description (falls back to `description`) */
+  seoDescription?: string;
 }
 
 export const categories = ["All", "Residential", "Commercial"] as const;
@@ -125,6 +129,76 @@ export const projects: Project[] = [
         alt: "Master bedroom wardrobe joinery",
         width: 1200,
         height: 800,
+      },
+    ],
+  },
+  {
+    slug: "evergreen-salon-south-jakarta",
+    title: "Evergreen Salon South Jakarta",
+    category: "Commercial",
+    categoryLabel: "Commercial / Salon",
+    location: "Jakarta Selatan",
+    locationFull:
+      "Jakarta Selatan, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta, Indonesia",
+    year: "2022",
+    status: "Terbangun",
+    cost: "IDR 10 juta – 25 juta",
+    description:
+      "Desain salon kecantikan ini dikerjakan pada akhir tahun 2022, dengan dominasi nuansa hijau, abu dan putih.",
+    seoDescription:
+      "Commercial salon interior design in South Jakarta, completed in late 2022 with a dominant palette of green, grey, and white.",
+    concept: [
+      "Evergreen Salon is a beauty-salon interior completed in late 2022, built around a calm, natural palette of green, grey, and white.",
+    ],
+    scope: ["Interior design", "Salon interior design"],
+    images: [
+      {
+        src: "/images/projects/evergreen-salon-south-jakarta/evergreen-salon-south-jakarta-01.jpg",
+        alt: "Evergreen Salon interior — South Jakarta",
+        width: 2000,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/evergreen-salon-south-jakarta/evergreen-salon-south-jakarta-02.jpg",
+        alt: "Evergreen Salon interior, second view",
+        width: 2000,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/evergreen-salon-south-jakarta/evergreen-salon-south-jakarta-03.jpg",
+        alt: "Evergreen Salon interior, third view",
+        width: 2000,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/evergreen-salon-south-jakarta/evergreen-salon-south-jakarta-04.jpg",
+        alt: "Evergreen Salon interior, fourth view",
+        width: 2000,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/evergreen-salon-south-jakarta/evergreen-salon-south-jakarta-05.jpg",
+        alt: "Evergreen Salon interior, fifth view",
+        width: 2000,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/evergreen-salon-south-jakarta/evergreen-salon-south-jakarta-06.jpg",
+        alt: "Evergreen Salon interior, sixth view",
+        width: 2000,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/evergreen-salon-south-jakarta/evergreen-salon-south-jakarta-07.jpg",
+        alt: "Evergreen Salon interior, seventh view",
+        width: 2000,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/evergreen-salon-south-jakarta/evergreen-salon-south-jakarta-08.jpg",
+        alt: "Evergreen Salon interior, eighth view",
+        width: 2000,
+        height: 1200,
       },
     ],
   },

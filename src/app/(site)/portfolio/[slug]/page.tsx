@@ -23,14 +23,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject(slug);
   if (!project) return {};
   const cover = project.images?.[0];
+  const description = project.seoDescription ?? project.description;
   return {
     title: project.title,
-    description: project.description,
+    description,
     alternates: { canonical: `/portfolio/${project.slug}` },
     openGraph: cover
       ? {
           title: `${project.title} — ${site.legalName}`,
-          description: project.description,
+          description,
           images: [
             {
               url: new URL(cover.src, site.siteUrl).toString(),
@@ -61,7 +62,7 @@ export default async function ProjectPage({ params }: Props) {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <p className="eyebrow">
-              {project.category} · {project.location}
+              {project.categoryLabel ?? project.category} · {project.location}
               {project.year ? ` · ${project.year}` : ""}
             </p>
             <h1 className="mt-5 font-display text-[clamp(2.6rem,6vw,5rem)] font-medium leading-[1.02] tracking-[-0.01em] text-ink">
@@ -107,7 +108,9 @@ export default async function ProjectPage({ params }: Props) {
           <dl className="space-y-7 border-t border-line pt-8">
             <div>
               <dt className="eyebrow">Category</dt>
-              <dd className="mt-2 text-sm text-ink">{project.category}</dd>
+              <dd className="mt-2 text-sm text-ink">
+                {project.categoryLabel ?? project.category}
+              </dd>
             </div>
             <div>
               <dt className="eyebrow">Location</dt>
