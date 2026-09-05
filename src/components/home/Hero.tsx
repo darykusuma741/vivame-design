@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { withBasePath } from "@/lib/site";
 import { BlurFade } from "@/components/ui/motion";
+import { Parallax } from "@/components/ui/parallax";
 
 export function Hero() {
   return (
@@ -44,16 +45,18 @@ export function Hero() {
               className="absolute -bottom-3 -right-3 h-full w-full border border-gold/50"
             />
             <div className="group relative aspect-[3/2] w-full overflow-hidden bg-beige">
-              <Image
-                src={withBasePath(
-                  "/images/hero/luxurious-pantry-diningroom-livingroom.webp",
-                )}
-                alt="3D visualization of a luxurious pantry, dining room, and living room by VIVAME Design"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-                className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.05]"
-              />
+              <Parallax scale={1.08} className="relative h-full w-full">
+                <Image
+                  src={withBasePath(
+                    "/images/hero/luxurious-pantry-diningroom-livingroom.webp",
+                  )}
+                  alt="3D visualization of a luxurious pantry, dining room, and living room by VIVAME Design"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.05]"
+                />
+              </Parallax>
               {/* subtle depth + brand warmth */}
               <div
                 aria-hidden="true"

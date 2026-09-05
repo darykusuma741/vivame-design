@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { absoluteUrl, site } from "@/lib/site";
 import { Hero } from "@/components/home/Hero";
+import { FeaturedCarousel } from "@/components/home/FeaturedCarousel";
 import { AboutSection } from "@/components/home/AboutSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { PortfolioSection } from "@/components/home/PortfolioSection";
@@ -18,6 +19,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <FeaturedCarousel />
       <AboutSection />
       <ServicesSection />
       <PortfolioSection />
