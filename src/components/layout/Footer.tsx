@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { services } from "@/lib/content";
+import {
+  MailIcon,
+  MapPinIcon,
+  PhoneIcon,
+  socialIcon,
+  WhatsAppIcon,
+} from "@/components/ui/icons";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -77,8 +84,9 @@ export function Footer() {
             <li>
               <a
                 href={`mailto:${site.email}`}
-                className="text-stone transition-colors hover:text-ink"
+                className="flex items-center gap-2.5 text-stone transition-colors hover:text-ink"
               >
+                <MailIcon className="h-4 w-4 shrink-0 text-faint" />
                 {site.email}
               </a>
             </li>
@@ -86,8 +94,9 @@ export function Footer() {
               <li key={phone.tel}>
                 <a
                   href={`tel:${phone.tel}`}
-                  className="text-stone transition-colors hover:text-ink"
+                  className="flex items-center gap-2.5 text-stone transition-colors hover:text-ink"
                 >
+                  <PhoneIcon className="h-4 w-4 shrink-0 text-faint" />
                   {phone.display}
                 </a>
               </li>
@@ -97,8 +106,9 @@ export function Footer() {
                 href={primary.wa}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-stone transition-colors hover:text-ink"
+                className="flex items-center gap-2.5 text-stone transition-colors hover:text-ink"
               >
+                <WhatsAppIcon className="h-4 w-4 shrink-0 text-faint" />
                 WhatsApp
               </a>
             </li>
@@ -107,23 +117,26 @@ export function Footer() {
                 href={site.location.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-stone transition-colors hover:text-ink"
+                className="flex items-center gap-2.5 text-stone transition-colors hover:text-ink"
               >
+                <MapPinIcon className="h-4 w-4 shrink-0 text-faint" />
                 View on Google Maps
               </a>
             </li>
           </ul>
 
-          <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+          <div className="mt-6 flex flex-wrap gap-2">
             {site.social.map((social) => (
               <a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-stone transition-colors hover:text-ink"
+                aria-label={social.label}
+                title={social.label}
+                className="flex h-9 w-9 items-center justify-center border border-line text-stone transition-colors hover:border-ink hover:text-ink"
               >
-                {social.label}
+                {socialIcon(social.label)}
               </a>
             ))}
           </div>

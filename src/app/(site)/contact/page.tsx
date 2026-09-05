@@ -3,6 +3,7 @@ import { site, absoluteUrl } from "@/lib/site";
 import { PageIntro } from "@/components/site/PageIntro";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { Reveal } from "@/components/ui/Reveal";
+import { socialIcon, WhatsAppIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = {
   title: "Start a Project",
@@ -37,6 +38,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="btn btn-dark"
                   >
+                    <WhatsAppIcon className="h-4 w-4" />
                     WhatsApp {phone.label.toLowerCase()}
                   </a>
                 ))}
@@ -90,16 +92,18 @@ export default function ContactPage() {
 
             <div>
               <h2 className="eyebrow">Follow</h2>
-              <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+              <div className="mt-4 flex flex-wrap gap-2">
                 {site.social.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-stone transition-colors hover:text-ink"
+                    aria-label={social.label}
+                    title={social.label}
+                    className="flex h-10 w-10 items-center justify-center border border-line text-stone transition-colors hover:border-ink hover:text-ink"
                   >
-                    {social.label}
+                    {socialIcon(social.label)}
                   </a>
                 ))}
               </div>
