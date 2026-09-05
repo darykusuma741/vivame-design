@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
+import { animate } from "animejs";
+import { prefersReducedMotion } from "@/lib/anime";
 import { site, withBasePath } from "@/lib/site";
 import { useI18n } from "@/components/i18n/LanguageProvider";
 import { LanguageToggle } from "@/components/i18n/LanguageToggle";
@@ -12,6 +14,32 @@ import { LanguageToggle } from "@/components/i18n/LanguageToggle";
 function isActivePath(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+/** Active nav underline that draws in (scaleX) via Anime.js when it mounts. */
+function ActiveUnderline() {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || prefersReducedMotion()) return;
+    const instance = animate(el, {
+      scaleX: [0, 1],
+      duration: 500,
+      ease: "outExpo",
+    });
+    return () => {
+      instance.pause();
+    };
+  }, []);
+
+  return (
+    <span
+      ref={ref}
+      aria-hidden="true"
+      className="absolute inset-x-0 -bottom-0.5 h-px origin-left bg-ink"
+    />
+  );
 }
 
 export function Header() {
@@ -94,12 +122,7 @@ export function Header() {
                 }`}
               >
                 {item.label}
-                {active && (
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-x-0 -bottom-0.5 h-px bg-ink"
-                  />
-                )}
+                {active && <ActiveUnderline />}
               </Link>
             );
           })}

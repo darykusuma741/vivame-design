@@ -86,7 +86,7 @@ export default function RootLayout({
     >
       <body>
         <noscript>
-          <style>{`.splash-screen{display:none !important}.reveal,.process-node{opacity:1 !important;transform:none !important}.process-rail-line,.process-rail-line-v{transform:none !important}`}</style>
+          <style>{`.splash-screen{display:none !important}.reveal,.process-node,.stagger-reveal>*{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
         <script
           type="application/ld+json"

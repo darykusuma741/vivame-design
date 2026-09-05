@@ -219,6 +219,12 @@
     transform: none;
   }
 
+  /* Stagger reveal — initial hidden state; Anime.js (useStaggerIn) animates in. */
+  .stagger-reveal > * {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
   @keyframes step-enter {
     from {
       opacity: 0;
@@ -250,7 +256,8 @@
 
   @media (prefers-reduced-motion: reduce) {
     .reveal,
-    .process-node {
+    .process-node,
+    .stagger-reveal > * {
       opacity: 1 !important;
       transform: none !important;
       transition: none !important;

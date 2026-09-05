@@ -4,6 +4,7 @@ import { useState } from "react";
 import { categories, projects } from "@/lib/portfolio";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
 import { useI18n } from "@/components/i18n/LanguageProvider";
+import { useStaggerIn } from "@/lib/anime";
 
 export function PortfolioGrid() {
   const { t } = useI18n();
@@ -12,6 +13,7 @@ export function PortfolioGrid() {
     active === "All"
       ? projects
       : projects.filter((p) => p.category === active);
+  const gridRef = useStaggerIn<HTMLDivElement>({ stagger: 60, duration: 600 }, active);
 
   const labelFor = (category: string) =>
     category === "All"
@@ -47,7 +49,10 @@ export function PortfolioGrid() {
         })}
       </div>
 
-      <div className="mt-10 columns-1 gap-8 sm:columns-2 lg:columns-3">
+      <div
+        ref={gridRef}
+        className="stagger-reveal mt-10 columns-1 gap-8 sm:columns-2 lg:columns-3"
+      >
         {filtered.map((project) => (
           <div key={project.slug} className="mb-8 break-inside-avoid">
             <ProjectCard project={project} />

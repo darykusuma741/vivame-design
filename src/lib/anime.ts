@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { animate, svg, utils } from "animejs";
+import { animate, svg } from "animejs";
 
 /**
  * Anime.js integration — used for SVG line-drawing and timeline orchestration
@@ -100,4 +100,82 @@ export function useDrawIn<T extends HTMLElement = HTMLDivElement>(
   return ref;
 }
 
-export { animate, svg, utils };
+export interface StaggerInOptions {
+  /** Per-item stagger in ms. */
+  stagger?: number;
+  /** Animation duration in ms. */
+  duration?: number;
+  /** Initial delay in ms. */
+  delay?: number;
+  /** Starting vertical offset in px (must match the `.stagger-reveal > *` CSS). */
+  translateY?: number;
+  /** IntersectionObserver threshold. */
+  threshold?: number;
+}
+
+/**
+ * Staggers the direct children of the referenced container into view when it
+ * enters the viewport. Pair with the `.stagger-reveal` class on the container
+ * (it sets children to `opacity:0; translateY(20px)` so there is no flash before
+ * the observer fires). Respects prefers-reduced-motion.
+ */
+export function useStaggerIn<T extends HTMLElement = HTMLDivElement>(
+  options: StaggerInOptions = {},
+  trigger?: unknown,
+) {
+  const ref = useRef<T | null>(null);
+  const {
+    stagger = 70,
+    duration = 650,
+    delay = 0,
+    translateY = 20,
+    threshold = 0.1,
+  } = options;
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || prefersReducedMotion()) return;
+    const children = Array.from(el.children) as HTMLElement[];
+    if (!children.length) return;
+
+    let instance: ReturnType<typeof animate> | undefined;
+
+    const run = () => {
+      instance = animate(children, {
+        translateY: [translateY, 0],
+        opacity: [0, 1],
+        duration,
+        delay: (_el, i) => delay + (i ?? 0) * stagger,
+        ease: "outExpo",
+      });
+    };
+
+    if (typeof IntersectionObserver === "undefined") {
+      run();
+      return () => {
+        instance?.pause();
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            run();
+            observer.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold },
+    );
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+      instance?.pause();
+    };
+  }, [stagger, duration, delay, translateY, threshold, trigger]);
+
+  return ref;
+}
