@@ -32,7 +32,7 @@ export function SplashScreen() {
     <AnimatePresence>
       {show && (
         <motion.div
-          className="splash-screen fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ink"
+          className="splash-screen fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-ink px-6"
           exit={{ opacity: 0, scale: 1.04 }}
           transition={{ duration: 0.55, ease: EASE }}
         >
@@ -42,12 +42,12 @@ export function SplashScreen() {
             transition={{ duration: 1, ease: EASE }}
           >
             <Image
-              src={withBasePath("/images/logo.webp")}
+              src={withBasePath("/images/logo-white.png")}
               alt="VIVAME Design"
               width={396}
               height={176}
               priority
-              className="h-14 w-auto invert mix-blend-screen md:h-20"
+              className="h-12 w-auto sm:h-16 md:h-20"
             />
           </motion.div>
 
@@ -55,7 +55,7 @@ export function SplashScreen() {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ delay: 0.5, duration: 0.9, ease: EASE }}
-            className="mt-7 h-px w-48 origin-center bg-gold"
+            className="mt-6 h-px w-32 origin-center bg-gold sm:mt-7 sm:w-48"
             aria-hidden="true"
           />
 
@@ -63,7 +63,7 @@ export function SplashScreen() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.95, duration: 0.6, ease: EASE }}
-            className="mt-5 text-[0.62rem] font-medium uppercase tracking-[0.34em] text-paper/60"
+            className="mt-5 max-w-[88vw] text-center text-[0.55rem] font-medium uppercase leading-relaxed tracking-[0.18em] text-paper/60 sm:text-[0.62rem] sm:tracking-[0.32em]"
           >
             {site.tagline}
           </motion.p>
