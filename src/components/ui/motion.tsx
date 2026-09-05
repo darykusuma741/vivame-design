@@ -83,7 +83,7 @@ export function WordReveal({
         <span
           key={`${word}-${i}`}
           aria-hidden="true"
-          className="inline-block overflow-hidden align-bottom"
+          className="inline-block overflow-hidden align-bottom pb-[0.18em] -mb-[0.18em]"
         >
           <motion.span
             className="inline-block will-change-transform"
