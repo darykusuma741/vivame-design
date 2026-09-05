@@ -49,7 +49,8 @@ export const projects: Project[] = [
   {
     slug: "monic-house",
     title: "Monic House",
-    category: "Residential",
+    category: "Commercial",
+    categoryLabel: "Commercial / Law Firm",
     year: "2020",
     images: [
       {
