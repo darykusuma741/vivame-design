@@ -42,12 +42,12 @@ export function SplashScreen() {
             transition={{ duration: 1, ease: EASE }}
           >
             <Image
-              src={withBasePath("/images/logo-white.png")}
+              src={withBasePath("/images/logo.webp")}
               alt="VIVAME Design"
               width={396}
               height={176}
               priority
-              className="h-12 w-auto sm:h-16 md:h-20"
+              className="h-12 w-auto invert mix-blend-screen sm:h-16 md:h-20"
             />
           </motion.div>
 
