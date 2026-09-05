@@ -199,6 +199,13 @@ const en: Dictionary = {
     "aboutpage.values": "What we value",
     "aboutpage.note": "Studio story, team, and photography in preparation",
 
+    "aboutpage.founder.eyebrow": "Founder",
+    "aboutpage.founder.name": "Liska Yulianti",
+    "aboutpage.founder.detail": "Est. 2015 · Depok, Indonesia",
+    "aboutpage.founder.alt": "Liska Yulianti, founder of VIVAME Design",
+    "aboutpage.founder.bio":
+      "Liska Yulianti founded VIVAME Design, an interior design studio and interior workshop established in 2015 and based in Depok, Indonesia. The studio designs and builds residential and commercial interiors — hotels, villas, apartments, government buildings, offices, restaurants, and cafés.",
+
     "servicespage.title.1": "What we",
     "servicespage.title.em": "do",
     "servicespage.lead":
@@ -510,6 +517,13 @@ const id: Dictionary = {
       "Konsep dan perencanaan ruang didahulukan; visualisasi 3D menghidupkan ide sehingga tidak ada yang tersisa pada imajinasi. Dari sketsa pertama hingga render akhir, tujuannya sama: ruang yang sudah terasa seperti rumah.",
     "aboutpage.values": "Apa yang kami hargai",
     "aboutpage.note": "Kisah studio, tim, dan fotografi sedang disiapkan",
+
+    "aboutpage.founder.eyebrow": "Pendiri",
+    "aboutpage.founder.name": "Liska Yulianti",
+    "aboutpage.founder.detail": "Sejak 2015 · Depok, Indonesia",
+    "aboutpage.founder.alt": "Liska Yulianti, pendiri VIVAME Design",
+    "aboutpage.founder.bio":
+      "Liska Yulianti mendirikan VIVAME Design, studio desain interior dan workshop interior yang berdiri sejak 2015 dan berbasis di Depok, Indonesia. Studio ini merancang dan membangun interior hunian dan komersial — hotel, vila, apartemen, gedung pemerintahan, kantor, restoran, dan kafe.",
 
     "servicespage.title.1": "Apa yang kami",
     "servicespage.title.em": "lakukan",

@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { PageIntro } from "@/components/site/PageIntro";
-import { PlaceholderArt } from "@/components/site/PlaceholderArt";
-import { PlaceholderNote } from "@/components/site/PlaceholderNote";
 import { Reveal } from "@/components/ui/Reveal";
+import { withBasePath } from "@/lib/site";
 import { useI18n } from "@/components/i18n/LanguageProvider";
 
 export function AboutContent() {
@@ -36,18 +36,45 @@ export function AboutContent() {
         </div>
       </div>
 
-      <Reveal>
-        <div className="mt-16">
-          <PlaceholderArt
-            variant={5}
-            label="Abstract studio composition"
-            className="aspect-[16/9] w-full lg:aspect-[21/9]"
-          />
-        </div>
-      </Reveal>
+      {/* Founder */}
+      <section className="mt-24 border-t border-line pt-16 lg:mt-32 lg:pt-20">
+        <Reveal>
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-5">
+              <div className="relative">
+                <div
+                  aria-hidden="true"
+                  className="absolute -bottom-4 -right-4 h-full w-full border border-gold/50"
+                />
+                <Image
+                  src={withBasePath("/images/founder/liska-yulianti.jpg")}
+                  alt={t("aboutpage.founder.alt")}
+                  width={1024}
+                  height={1024}
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="relative h-auto w-full"
+                />
+              </div>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7">
+              <p className="eyebrow">{t("aboutpage.founder.eyebrow")}</p>
+              <h2 className="mt-5 font-display text-[clamp(2.4rem,5vw,3.6rem)] font-medium leading-[1.02] tracking-[-0.01em] text-ink">
+                {t("aboutpage.founder.name")}
+              </h2>
+              <p className="mt-4 text-[0.72rem] font-medium uppercase tracking-[0.26em] text-gold">
+                {t("aboutpage.founder.detail")}
+              </p>
+              <div className="mt-8 h-px w-10 bg-gold" aria-hidden="true" />
+              <p className="mt-8 max-w-[46ch] text-base leading-7 text-stone sm:text-lg sm:leading-8">
+                {t("aboutpage.founder.bio")}
+              </p>
+            </div>
+          </div>
+        </Reveal>
+      </section>
 
       {/* What we value */}
-      <div className="mt-20">
+      <div className="mt-24">
         <Reveal>
           <h2 className="eyebrow">{t("aboutpage.values")}</h2>
         </Reveal>
@@ -66,8 +93,6 @@ export function AboutContent() {
           ))}
         </div>
       </div>
-
-      <PlaceholderNote>{t("aboutpage.note")}</PlaceholderNote>
     </PageIntro>
   );
 }
