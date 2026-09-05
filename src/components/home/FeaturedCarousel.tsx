@@ -5,6 +5,7 @@ import { withBasePath } from "@/lib/site";
 import { Carousel } from "@/components/ui/carousel";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { BlurFade } from "@/components/ui/motion";
+import { Parallax } from "@/components/ui/parallax";
 
 /**
  * Featured real projects in a full-width editorial carousel. Only projects
@@ -22,13 +23,15 @@ export function FeaturedCarousel() {
         className="group block"
       >
         <div className="relative aspect-[16/10] w-full overflow-hidden bg-beige sm:aspect-[16/9]">
-          <Image
-            src={withBasePath(cover.src)}
-            alt={cover.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 80vw"
-            className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
-          />
+          <Parallax scale={1.06} className="relative h-full w-full">
+            <Image
+              src={withBasePath(cover.src)}
+              alt={cover.alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 80vw"
+              className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
+            />
+          </Parallax>
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent"

@@ -45,7 +45,7 @@ export function Hero() {
               className="absolute -bottom-3 -right-3 h-full w-full border border-gold/50"
             />
             <div className="group relative aspect-[3/2] w-full overflow-hidden bg-beige">
-              <Parallax scale={1.08} className="relative h-full w-full">
+              <Parallax scale={1.12} className="relative h-full w-full">
                 <Image
                   src={withBasePath(
                     "/images/hero/luxurious-pantry-diningroom-livingroom.webp",

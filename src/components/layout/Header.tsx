@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { site } from "@/lib/site";
+import { site, withBasePath } from "@/lib/site";
 
 function isActivePath(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -46,15 +47,17 @@ export function Header() {
       <div className="container-site flex h-16 items-center justify-between gap-6 md:h-20">
         <Link
           href="/"
-          className="inline-flex items-baseline gap-2.5 text-ink"
+          className="inline-flex items-center"
           aria-label="VIVAME Design — home"
         >
-          <span className="font-display text-[1.5rem] font-semibold tracking-[0.04em]">
-            {site.name}
-          </span>
-          <span className="hidden text-[0.6rem] font-medium uppercase tracking-[0.3em] text-stone sm:inline">
-            Design
-          </span>
+          <Image
+            src={withBasePath("/images/logo.webp")}
+            alt="VIVAME Design"
+            width={489}
+            height={257}
+            priority
+            className="h-8 w-auto md:h-9"
+          />
         </Link>
 
         {/* Desktop navigation */}
