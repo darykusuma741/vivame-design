@@ -6,6 +6,7 @@ import { withBasePath } from "@/lib/site";
 import { useI18n } from "@/components/i18n/LanguageProvider";
 import { BlurFade, Float, WordReveal } from "@/components/ui/motion";
 import { Parallax } from "@/components/ui/parallax";
+import { useDrawIn } from "@/lib/anime";
 import {
   FloorPlanSketch,
   SofaSketch,
@@ -16,13 +17,21 @@ import {
 export function Hero() {
   const { t } = useI18n();
 
+  // Anime.js sketch "draw-in" — timed to play as the splash screen recedes.
+  const floorPlanRef = useDrawIn<HTMLDivElement>({ duration: 1600, stagger: 26, delay: 2400 });
+  const sofaRef = useDrawIn<HTMLDivElement>({ duration: 800, stagger: 90, delay: 2560 });
+  const lampRef = useDrawIn<HTMLDivElement>({ duration: 800, stagger: 90, delay: 2700 });
+  const plantRef = useDrawIn<HTMLDivElement>({ duration: 800, stagger: 90, delay: 2840 });
+
   return (
     <section className="relative overflow-hidden">
       {/* Architectural floor-plan backdrop — slow parallax + drift */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
         <Parallax y={52} className="h-full w-full">
           <Float distance={26} duration={18} className="h-full w-full">
-            <FloorPlanSketch className="h-full w-full text-ink/[0.05]" />
+            <div ref={floorPlanRef} className="h-full w-full">
+              <FloorPlanSketch className="h-full w-full text-ink/[0.05]" />
+            </div>
           </Float>
         </Parallax>
       </div>
@@ -33,7 +42,9 @@ export function Hero() {
         className="pointer-events-none absolute left-[2%] top-[12%] z-0 hidden lg:block"
       >
         <Float distance={18} duration={9} delay={0.3}>
-          <SofaSketch className="h-24 w-32 text-gold/40" />
+          <div ref={sofaRef}>
+            <SofaSketch className="h-24 w-32 text-gold/40" />
+          </div>
         </Float>
       </Parallax>
       <Parallax
@@ -41,7 +52,9 @@ export function Hero() {
         className="pointer-events-none absolute right-[3%] top-[8%] z-0 hidden lg:block"
       >
         <Float distance={22} duration={12} delay={0.8}>
-          <LampSketch className="h-40 w-[4.5rem] text-gold/35" />
+          <div ref={lampRef}>
+            <LampSketch className="h-40 w-[4.5rem] text-gold/35" />
+          </div>
         </Float>
       </Parallax>
       <Parallax
@@ -49,7 +62,9 @@ export function Hero() {
         className="pointer-events-none absolute bottom-[10%] left-[6%] z-0 hidden lg:block"
       >
         <Float distance={16} duration={10} delay={1.2}>
-          <PlantSketch className="h-28 w-[5.5rem] text-gold/35" />
+          <div ref={plantRef}>
+            <PlantSketch className="h-28 w-[5.5rem] text-gold/35" />
+          </div>
         </Float>
       </Parallax>
 

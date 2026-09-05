@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/components/i18n/LanguageProvider";
 import { PlaceholderArt } from "@/components/site/PlaceholderArt";
+import { animate, svg } from "animejs";
+import { prefersReducedMotion } from "@/lib/anime";
 
 /**
  * DesignProcess — an interactive, editorial timeline of the studio's working
@@ -15,6 +17,8 @@ export function DesignProcess() {
   const [active, setActive] = useState(0);
   const [inView, setInView] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const railRef = useRef<SVGLineElement>(null);
+  const vRailRef = useRef<SVGLineElement>(null);
 
   useEffect(() => {
     const node = rootRef.current;
@@ -41,6 +45,24 @@ export function DesignProcess() {
     return () => observer.disconnect();
   }, []);
 
+  // Anime.js: draw the connecting lines when the timeline enters the view.
+  useEffect(() => {
+    if (!inView || prefersReducedMotion()) return;
+    const lines = [railRef.current, vRailRef.current].filter(
+      (l): l is SVGLineElement => l != null,
+    );
+    if (!lines.length) return;
+    const drawable = svg.createDrawable(lines);
+    const instance = animate(drawable, {
+      draw: ["0 0", "0 1"],
+      duration: 1100,
+      ease: "inOutSine",
+    });
+    return () => {
+      instance.pause();
+    };
+  }, [inView]);
+
   const activeStep = steps[active];
   const progressWidth = `${((2 * active + 1) / (2 * steps.length)) * 100}%`;
 
@@ -49,10 +71,24 @@ export function DesignProcess() {
       {/* Desktop — horizontal editorial timeline */}
       <div className="hidden lg:block">
         <div className="relative">
-          <span
+          <svg
             aria-hidden="true"
-            className="process-rail-line absolute left-0 right-0 top-[1.375rem] h-px bg-line"
-          />
+            className="pointer-events-none absolute inset-x-0 top-[1.375rem] h-px w-full overflow-visible"
+            viewBox="0 0 100 1"
+            preserveAspectRatio="none"
+          >
+            <line
+              ref={railRef}
+              x1="0"
+              y1="0.5"
+              x2="100"
+              y2="0.5"
+              stroke="currentColor"
+              strokeWidth="1"
+              vectorEffect="non-scaling-stroke"
+              className="text-line"
+            />
+          </svg>
           <span
             aria-hidden="true"
             className="absolute left-0 top-[1.375rem] h-px bg-gold-deep transition-[width] duration-500 ease-out"
@@ -127,10 +163,24 @@ export function DesignProcess() {
       {/* Mobile — vertical timeline */}
       <div className="lg:hidden">
         <ol className="relative">
-          <span
+          <svg
             aria-hidden="true"
-            className="process-rail-line-v absolute bottom-[1.375rem] left-6 top-[1.375rem] w-px bg-line"
-          />
+            className="pointer-events-none absolute bottom-[1.375rem] left-6 top-[1.375rem] w-px overflow-visible"
+            viewBox="0 0 1 100"
+            preserveAspectRatio="none"
+          >
+            <line
+              ref={vRailRef}
+              x1="0.5"
+              y1="0"
+              x2="0.5"
+              y2="100"
+              stroke="currentColor"
+              strokeWidth="1"
+              vectorEffect="non-scaling-stroke"
+              className="text-line"
+            />
+          </svg>
           {steps.map((step, i) => (
             <li
               key={step.number}
