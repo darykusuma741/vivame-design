@@ -70,7 +70,7 @@ const jsonLd = {
   },
   sameAs: site.social.map((s) => s.href),
   areaServed: "Indonesia",
-  image: absoluteUrl("/icon.svg"),
+  image: absoluteUrl("/icon.png"),
 };
 
 export default function RootLayout({
