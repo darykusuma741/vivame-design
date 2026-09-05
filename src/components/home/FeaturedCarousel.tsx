@@ -12,7 +12,7 @@ import { Parallax } from "@/components/ui/parallax";
 
 export function FeaturedCarousel() {
   const { t } = useI18n();
-  const featured = projects.filter((p) => p.images && p.images.length > 0);
+  const featured = projects.filter((p) => p.featured);
 
   const slides = featured.map((project) => {
     const cover = project.images![0];

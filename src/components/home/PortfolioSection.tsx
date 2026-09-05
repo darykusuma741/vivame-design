@@ -5,7 +5,6 @@ import { projects } from "@/lib/portfolio";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { PlaceholderNote } from "@/components/site/PlaceholderNote";
 import { useI18n } from "@/components/i18n/LanguageProvider";
 
 export function PortfolioSection() {
@@ -43,7 +42,6 @@ export function PortfolioSection() {
             ))}
           </div>
         </Reveal>
-        <PlaceholderNote>{t("portfolio.note")}</PlaceholderNote>
       </div>
     </section>
   );
