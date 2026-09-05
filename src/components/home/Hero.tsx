@@ -6,13 +6,46 @@ import { withBasePath } from "@/lib/site";
 import { useI18n } from "@/components/i18n/LanguageProvider";
 import { BlurFade } from "@/components/ui/motion";
 import { Parallax } from "@/components/ui/parallax";
+import {
+  FloorPlanSketch,
+  SofaSketch,
+  LampSketch,
+  PlantSketch,
+} from "@/components/ui/sketch";
 
 export function Hero() {
   const { t } = useI18n();
 
   return (
     <section className="relative overflow-hidden">
-      <div className="container-site grid min-h-[80vh] items-center gap-12 py-16 lg:grid-cols-12 lg:gap-10 lg:py-20">
+      {/* Architectural floor-plan backdrop — slow parallax */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
+        <Parallax y={52} className="h-full w-full">
+          <FloorPlanSketch className="h-full w-full text-ink/[0.05]" />
+        </Parallax>
+      </div>
+
+      {/* Floating furniture sketches — multi-layer parallax */}
+      <Parallax
+        y={-68}
+        className="pointer-events-none absolute left-[2%] top-[12%] z-0 hidden lg:block"
+      >
+        <SofaSketch className="h-24 w-32 text-gold/40" />
+      </Parallax>
+      <Parallax
+        y={92}
+        className="pointer-events-none absolute right-[3%] top-[8%] z-0 hidden lg:block"
+      >
+        <LampSketch className="h-40 w-[4.5rem] text-gold/35" />
+      </Parallax>
+      <Parallax
+        y={-52}
+        className="pointer-events-none absolute bottom-[10%] left-[6%] z-0 hidden lg:block"
+      >
+        <PlantSketch className="h-28 w-[5.5rem] text-gold/35" />
+      </Parallax>
+
+      <div className="container-site relative z-10 grid min-h-[80vh] items-center gap-12 py-16 lg:grid-cols-12 lg:gap-10 lg:py-20">
         <div className="lg:col-span-6">
           <BlurFade y={16}>
             <p className="eyebrow">{t("hero.eyebrow")}</p>
