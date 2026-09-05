@@ -38,3 +38,64 @@ export function BlurFade({
     </motion.div>
   );
 }
+
+/** Continuous slow vertical float (loops) — for "breathing" background/decoration. */
+export function Float({
+  children,
+  className,
+  distance = 16,
+  duration = 10,
+  delay = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  distance?: number;
+  duration?: number;
+  delay?: number;
+}) {
+  return (
+    <motion.div
+      className={className}
+      animate={{ y: [0, -distance, 0] }}
+      transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/** Word-by-word mask reveal — each word slides up out of an overflow-hidden clip. */
+export function WordReveal({
+  text,
+  className,
+  delay = 0,
+  stagger = 0.055,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+  stagger?: number;
+}) {
+  const words = text.split(" ");
+  return (
+    <span className={className} aria-label={text}>
+      {words.map((word, i) => (
+        <span
+          key={`${word}-${i}`}
+          aria-hidden="true"
+          className="inline-block overflow-hidden align-bottom"
+        >
+          <motion.span
+            className="inline-block will-change-transform"
+            initial={{ y: "115%", opacity: 0.001 }}
+            animate={{ y: "0%", opacity: 1 }}
+            transition={{ delay: delay + i * stagger, duration: 0.7, ease: EASE }}
+          >
+            {word}
+            {i < words.length - 1 ? "\u00A0" : ""}
+          </motion.span>
+        </span>
+      ))}
+    </span>
+  );
+}

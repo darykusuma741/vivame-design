@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { site, withBasePath } from "@/lib/site";
 import { useI18n } from "@/components/i18n/LanguageProvider";
 import { LanguageToggle } from "@/components/i18n/LanguageToggle";
@@ -19,6 +20,11 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const didOpen = useRef(false);
+
+  // Scroll-aware header: solid + shadow once the page is scrolled.
+  const { scrollY, scrollYProgress } = useScroll();
+  const [scrolled, setScrolled] = useState(false);
+  useMotionValueEvent(scrollY, "change", (latest) => setScrolled(latest > 12));
 
   // Body scroll lock + Escape-to-close while the menu is open.
   useEffect(() => {
@@ -46,7 +52,18 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur-md">
+    <header
+      className={`sticky top-0 z-40 border-b backdrop-blur-md transition-[background-color,box-shadow,border-color] duration-300 ${
+        scrolled
+          ? "border-line bg-paper/95 shadow-[0_8px_30px_rgba(26,26,26,0.07)]"
+          : "border-transparent bg-paper/0"
+      }`}
+    >
+      <motion.div
+        aria-hidden="true"
+        style={{ scaleX: scrollYProgress }}
+        className="absolute inset-x-0 top-0 h-[2px] origin-left bg-gold"
+      />
       <div className="container-site flex h-16 items-center justify-between gap-6 md:h-20">
         <Link
           href="/"

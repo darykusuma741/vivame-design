@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { withBasePath } from "@/lib/site";
 import { useI18n } from "@/components/i18n/LanguageProvider";
-import { BlurFade } from "@/components/ui/motion";
+import { BlurFade, Float, WordReveal } from "@/components/ui/motion";
 import { Parallax } from "@/components/ui/parallax";
 import {
   FloorPlanSketch,
@@ -18,31 +18,39 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Architectural floor-plan backdrop — slow parallax */}
+      {/* Architectural floor-plan backdrop — slow parallax + drift */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
         <Parallax y={52} className="h-full w-full">
-          <FloorPlanSketch className="h-full w-full text-ink/[0.05]" />
+          <Float distance={26} duration={18} className="h-full w-full">
+            <FloorPlanSketch className="h-full w-full text-ink/[0.05]" />
+          </Float>
         </Parallax>
       </div>
 
-      {/* Floating furniture sketches — multi-layer parallax */}
+      {/* Floating furniture sketches — multi-layer parallax + float */}
       <Parallax
         y={-68}
         className="pointer-events-none absolute left-[2%] top-[12%] z-0 hidden lg:block"
       >
-        <SofaSketch className="h-24 w-32 text-gold/40" />
+        <Float distance={18} duration={9} delay={0.3}>
+          <SofaSketch className="h-24 w-32 text-gold/40" />
+        </Float>
       </Parallax>
       <Parallax
         y={92}
         className="pointer-events-none absolute right-[3%] top-[8%] z-0 hidden lg:block"
       >
-        <LampSketch className="h-40 w-[4.5rem] text-gold/35" />
+        <Float distance={22} duration={12} delay={0.8}>
+          <LampSketch className="h-40 w-[4.5rem] text-gold/35" />
+        </Float>
       </Parallax>
       <Parallax
         y={-52}
         className="pointer-events-none absolute bottom-[10%] left-[6%] z-0 hidden lg:block"
       >
-        <PlantSketch className="h-28 w-[5.5rem] text-gold/35" />
+        <Float distance={16} duration={10} delay={1.2}>
+          <PlantSketch className="h-28 w-[5.5rem] text-gold/35" />
+        </Float>
       </Parallax>
 
       <div className="container-site relative z-10 grid min-h-[80vh] items-center gap-12 py-16 lg:grid-cols-12 lg:gap-10 lg:py-20">
@@ -50,19 +58,20 @@ export function Hero() {
           <BlurFade y={16}>
             <p className="eyebrow">{t("hero.eyebrow")}</p>
           </BlurFade>
-          <BlurFade delay={0.08}>
-            <h1 className="mt-6 font-display text-[clamp(2.9rem,8.5vw,5.75rem)] font-medium leading-[1.01] tracking-[-0.01em] text-ink">
-              {t("hero.title.1")}
-              <br />
-              {t("hero.title.2")} <em className="italic text-gold-deep">{t("hero.title.em")}</em>
-            </h1>
-          </BlurFade>
-          <BlurFade delay={0.16}>
+          <h1 className="mt-6 font-display text-[clamp(2.9rem,8.5vw,5.75rem)] font-medium leading-[1.01] tracking-[-0.01em] text-ink">
+            <WordReveal text={t("hero.title.1")} delay={0.15} />
+            <br />
+            <WordReveal text={t("hero.title.2")} delay={0.42} />{" "}
+            <em className="italic text-gold-deep">
+              <WordReveal text={t("hero.title.em")} delay={0.66} />
+            </em>
+          </h1>
+          <BlurFade delay={0.9}>
             <p className="mt-7 max-w-[52ch] text-base leading-7 text-stone sm:text-lg sm:leading-8">
               {t("hero.lead")}
             </p>
           </BlurFade>
-          <BlurFade delay={0.24} y={16}>
+          <BlurFade delay={1.05} y={16}>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link href="/portfolio" className="btn btn-dark">
                 {t("hero.viewProjects")}
@@ -74,7 +83,7 @@ export function Hero() {
           </BlurFade>
         </div>
 
-        <BlurFade className="lg:col-span-6" delay={0.16}>
+        <BlurFade className="lg:col-span-6" delay={0.25}>
           <div className="relative">
             <div
               aria-hidden="true"
