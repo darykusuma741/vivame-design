@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
+import { EASE } from "@/components/ui/motion";
 
 /**
- * Scroll-triggered reveal. Adds a subtle fade/rise once the element enters
- * the viewport. Honors prefers-reduced-motion via CSS (see globals.css).
- *
- * Initial state is `false` on BOTH server and client so the SSR HTML and the
- * first client render match exactly (avoids hydration mismatch). The element
- * is revealed on the client via IntersectionObserver (or a rAF fallback).
+ * Scroll-triggered reveal — now Motion-powered (blur-fade). Keeps the exact
+ * same API (`children`, `className`, `delay`) so every existing <Reveal> call
+ * site upgrades automatically. Honors prefers-reduced-motion via the root
+ * <MotionProvider reducedMotion="user">.
  */
 export function Reveal({
   children,
@@ -17,47 +16,18 @@ export function Reveal({
 }: {
   children: React.ReactNode;
   className?: string;
+  /** Milliseconds (backward-compatible with the old CSS transition-delay). */
   delay?: number;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    if (typeof IntersectionObserver === "undefined") {
-      const id = requestAnimationFrame(() => setVisible(true));
-      return () => cancelAnimationFrame(id);
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.disconnect();
-            break;
-          }
-        }
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  const classes = ["reveal", visible && "is-visible", className]
-    .filter(Boolean)
-    .join(" ");
-
   return (
-    <div
-      ref={ref}
-      className={classes}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "0px 0px -8% 0px" }}
+      transition={{ duration: 0.7, delay: delay / 1000, ease: EASE }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
