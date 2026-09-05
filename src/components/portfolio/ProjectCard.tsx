@@ -30,6 +30,16 @@ export function ProjectCard({ project }: { project: Project }) {
           />
         )}
 
+        {/* subtle mat + hover depth */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 border border-ink/10"
+        />
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink/25 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        />
+
         {project.status && (
           <span className="pointer-events-none absolute right-4 top-4 bg-ink/80 px-3 py-1 text-[0.62rem] font-medium uppercase tracking-[0.18em] text-paper backdrop-blur-sm">
             {project.status}
