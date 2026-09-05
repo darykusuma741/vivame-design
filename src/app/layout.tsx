@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { absoluteUrl, site } from "@/lib/site";
 import { MotionProvider } from "@/components/ui/motion";
+import { SplashScreen } from "@/components/ui/SplashScreen";
 import { LanguageProvider } from "@/components/i18n/LanguageProvider";
 import "./globals.css";
 
@@ -85,13 +86,14 @@ export default function RootLayout({
     >
       <body>
         <noscript>
-          <style>{`.reveal,.process-node{opacity:1 !important;transform:none !important}.process-rail-line,.process-rail-line-v{transform:none !important}`}</style>
+          <style>{`.splash-screen{display:none !important}.reveal,.process-node{opacity:1 !important;transform:none !important}.process-rail-line,.process-rail-line-v{transform:none !important}`}</style>
         </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <MotionProvider>
+          <SplashScreen />
           <LanguageProvider>{children}</LanguageProvider>
         </MotionProvider>
       </body>
