@@ -48,7 +48,7 @@ export function Hero() {
               aria-hidden="true"
               className="absolute -bottom-3 -right-3 h-full w-full border border-gold/50"
             />
-            <div className="relative aspect-[3/2] w-full overflow-hidden bg-beige">
+            <div className="group relative aspect-[3/2] w-full overflow-hidden bg-beige">
               <Image
                 src={withBasePath(
                   "/images/hero/luxurious-pantry-diningroom-livingroom.webp",
@@ -57,7 +57,7 @@ export function Hero() {
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
-                className="object-cover"
+                className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.05]"
               />
               {/* subtle depth + brand warmth */}
               <div
