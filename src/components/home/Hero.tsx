@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { PlaceholderArt } from "@/components/site/PlaceholderArt";
+import Image from "next/image";
+import { withBasePath } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -41,11 +42,18 @@ export function Hero() {
           className="lg:col-span-6 animate-fade-up"
           style={{ animationDelay: "160ms" }}
         >
-          <PlaceholderArt
-            variant={0}
-            label="Abstract architectural composition"
-            className="aspect-[4/5] w-full lg:aspect-[5/6]"
-          />
+          <div className="relative aspect-[3/2] w-full overflow-hidden">
+            <Image
+              src={withBasePath(
+                "/images/hero/luxurious-pantry-diningroom-livingroom.webp",
+              )}
+              alt="3D visualization of a luxurious pantry, dining room, and living room by VIVAME Design"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>
