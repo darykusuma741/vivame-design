@@ -60,8 +60,7 @@ export function ProjectCard({ project }: { project: Project }) {
         </span>
       </div>
       <p className="mt-1 text-sm text-stone">
-        {project.location}
-        {project.year ? ` · ${project.year}` : ""}
+        {[project.location, project.year].filter(Boolean).join(" · ")}
       </p>
     </Link>
   );

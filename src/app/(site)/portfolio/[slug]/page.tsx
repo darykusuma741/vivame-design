@@ -98,8 +98,13 @@ export default async function ProjectPage({ params }: Props) {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className={project.description ? "lg:col-span-7" : "lg:col-span-12"}>
             <p className="eyebrow">
-              {project.categoryLabel ?? project.category} · {project.location}
-              {project.year ? ` · ${project.year}` : ""}
+              {[
+                project.categoryLabel ?? project.category,
+                project.location,
+                project.year,
+              ]
+                .filter(Boolean)
+                .join(" · ")}
             </p>
             <h1 className="mt-5 font-display text-[clamp(2.6rem,6vw,5rem)] font-medium leading-[1.02] tracking-[-0.01em] text-ink">
               {project.title}
@@ -155,12 +160,14 @@ export default async function ProjectPage({ params }: Props) {
                 {project.categoryLabel ?? project.category}
               </dd>
             </div>
-            <div>
-              <dt className="eyebrow">Location</dt>
-              <dd className="mt-2 text-sm text-ink">
-                {project.locationFull ?? project.location}
-              </dd>
-            </div>
+            {(project.locationFull ?? project.location) && (
+              <div>
+                <dt className="eyebrow">Location</dt>
+                <dd className="mt-2 text-sm text-ink">
+                  {project.locationFull ?? project.location}
+                </dd>
+              </div>
+            )}
             {project.year && (
               <div>
                 <dt className="eyebrow">Year</dt>

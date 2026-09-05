@@ -21,7 +21,7 @@ export interface Project {
   slug: string;
   title: string;
   category: "Residential" | "Commercial";
-  location: string; // short, for cards
+  location?: string; // short, for cards (omitted when unknown — never invent)
   description?: string;
   concept?: string[];
   scope?: string[];
@@ -46,6 +46,128 @@ export interface Project {
 export const categories = ["All", "Residential", "Commercial"] as const;
 
 export const projects: Project[] = [
+  {
+    slug: "monic-house",
+    title: "Monic House",
+    category: "Residential",
+    year: "2020",
+    images: [
+      {
+        src: "/images/projects/monic-house/monic-house-01.jpg",
+        alt: "Interior of Monic House",
+        width: 2000,
+        height: 1179,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-02.jpg",
+        alt: "Monic House interior, second view",
+        width: 1889,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-03.jpg",
+        alt: "Monic House interior, third view",
+        width: 1958,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-04.jpg",
+        alt: "Monic House interior, fourth view",
+        width: 1958,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-05.jpg",
+        alt: "Lobby of Monic House",
+        width: 3000,
+        height: 1354,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-06.jpg",
+        alt: "Lobby of Monic House, second view",
+        width: 3000,
+        height: 1354,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-07.jpg",
+        alt: "Lobby of Monic House, third view",
+        width: 3000,
+        height: 1354,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-08.jpg",
+        alt: "Meeting area of Monic House",
+        width: 3000,
+        height: 1354,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-09.jpg",
+        alt: "Meeting area of Monic House, second view",
+        width: 3000,
+        height: 1354,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-10.jpg",
+        alt: "Meeting area of Monic House, third view",
+        width: 3000,
+        height: 1302,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-11.jpg",
+        alt: "Meeting area of Monic House, fourth view",
+        width: 3000,
+        height: 1354,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-12.jpg",
+        alt: "Kitchen render of Monic House",
+        width: 1800,
+        height: 1800,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-13.jpg",
+        alt: "Kitchen render of Monic House, second view",
+        width: 1800,
+        height: 1800,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-14.jpg",
+        alt: "Kitchen render of Monic House, third view",
+        width: 1800,
+        height: 1800,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-15.jpg",
+        alt: "Monic House interior, fifth view",
+        width: 2000,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-16.jpg",
+        alt: "Monic House interior, sixth view",
+        width: 2000,
+        height: 1500,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-17.jpg",
+        alt: "Monic House interior, seventh view",
+        width: 2000,
+        height: 1500,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-18.jpg",
+        alt: "Monic House interior, eighth view",
+        width: 2000,
+        height: 1500,
+      },
+      {
+        src: "/images/projects/monic-house/monic-house-19.jpg",
+        alt: "Monic House render",
+        width: 2000,
+        height: 1500,
+      },
+    ],
+  },
   {
     slug: "sawangan-permai-residential-house",
     title: "Sawangan Permai Residential House",
