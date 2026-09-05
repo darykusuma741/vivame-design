@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
+import Image from "next/image";
+import { site, withBasePath } from "@/lib/site";
 import { services } from "@/lib/content";
 import {
   MailIcon,
@@ -18,12 +19,13 @@ export function Footer() {
       <div className="container-site grid gap-12 py-16 md:grid-cols-2 md:py-20 lg:grid-cols-12">
         {/* Brand + address */}
         <div className="lg:col-span-4">
-          <p className="font-display text-3xl font-semibold tracking-[0.04em] text-ink">
-            {site.name}
-          </p>
-          <p className="mt-1 text-[0.62rem] font-medium uppercase tracking-[0.32em] text-stone">
-            Design Studio
-          </p>
+          <Image
+            src={withBasePath("/images/logo.webp")}
+            alt="VIVAME Design"
+            width={489}
+            height={257}
+            className="h-10 w-auto"
+          />
           <p className="mt-6 max-w-sm text-sm leading-6 text-stone">
             Interior design, architecture, and 3D interior visualization —
             beautiful, functional, and timeless spaces.
