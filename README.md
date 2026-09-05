@@ -12,6 +12,7 @@ clear path from *Discover → Explore → Trust → Contact*.
 - **Next.js 16** (App Router) + **React 19**
 - **TypeScript** (strict)
 - **Tailwind CSS v4** (CSS-first configuration)
+- **Motion** (Framer Motion v13) — scroll reveals, page transitions, parallax, carousels
 - **npm** (lockfile: `package-lock.json`)
 
 ## Getting started
@@ -69,34 +70,36 @@ dev only). The GitHub Actions workflow sets both variables automatically.
 
 ## GitHub Pages
 
-Deployment is fully automated by a GitHub Actions workflow
-(`.github/workflows/deploy.yml`). On every push to `main`, it:
+The site is deployed as a **static export** to
+`https://darykusuma741.github.io/vivame-design` (base path `/vivame-design`).
 
-1. checks out the repository,
-2. installs dependencies from the lockfile (`npm ci`),
-3. lints and builds the static site (`npm run build` → `out/`),
-4. uploads `out/` as a Pages artifact,
-5. deploys it to GitHub Pages.
+Deployment uses GitHub Pages' **"Deploy from a branch"** mode against the
+`gh-pages` branch. Build, then push the `out/` directory plus an empty
+`.nojekyll` marker to `gh-pages`:
 
-### One-time repository setup
+```bash
+npm run build            # produces out/
+TMP="$(mktemp -d)" && cp -r out/. "$TMP/" && touch "$TMP/.nojekyll"
+cd "$TMP" && git init -q && git add -A && git commit -q -m "deploy"
+git push -f git@github.com:darykusuma741/vivame-design.git HEAD:gh-pages
+```
 
-1. Push this repository to GitHub.
-2. In the repository, go to **Settings → Pages**.
-3. Under **Build and deployment → Source**, select **GitHub Actions**.
+Then in **Settings → Pages**, set **Source → Deploy from a branch** → branch
+`gh-pages` → folder `/ (root)`.
 
-That's it — the next push to `main` will build and deploy automatically. (If you
-push to a branch other than `main`, update the `branches` trigger in
-`deploy.yml`.)
+Build-time environment variables (inlined by Next.js):
 
-### Where to check status
+```bash
+NEXT_PUBLIC_BASE_PATH=/vivame-design \
+NEXT_PUBLIC_SITE_URL=https://darykusuma741.github.io \
+npm run build
+```
 
-- **Actions tab** → the "Deploy to GitHub Pages" workflow shows build/deploy logs.
-- The live URL is printed at the end of the `deploy` job, and shown under
-  **Settings → Pages**.
-
-The workflow derives the public URL and base path from the repository name, so it
-works for both project sites (`USERNAME/repo` → `https://USERNAME.github.io/repo`)
-and user/org sites (`USERNAME/USERNAME.github.io`).
+> **Note:** a GitHub Actions workflow (`.github/workflows/deploy.yml`) is also
+> provided for automated deploys, but at the time of writing it cannot run —
+> GitHub does not assign an Actions runner to this account (an account-level
+> entitlement issue, not a project defect). The legacy `gh-pages` branch flow
+> above is the working path.
 
 ### Custom domain
 
