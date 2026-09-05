@@ -90,6 +90,7 @@ export const site: SiteConfig = {
       label: "Homify",
       href: "https://www.homify.co.id/professionals/4815776/vivame-design",
     },
+    { label: "CGTrader", href: "https://www.cgtrader.com/designers/vivamedesign" },
   ],
 
   nav: [
@@ -106,6 +107,8 @@ export const site: SiteConfig = {
 
 /** Root-relative path with the base path prepended (e.g. "/repo/images/x.jpg"). */
 export function withBasePath(path: string): string {
+  // Absolute (remote) URLs pass through untouched — they carry their own origin.
+  if (/^https?:\/\//i.test(path)) return path;
   const normalized = path.startsWith("/") ? path : `/${path}`;
   return `${basePath}${normalized}`;
 }
