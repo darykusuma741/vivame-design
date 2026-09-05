@@ -388,10 +388,6 @@ export const projects: Project[] = [
       },
     ],
   },
-  // ============================================================
-  // CGTrader 3D interior visualizations (SketchUp + V-Ray)
-  // Imagery is referenced from the CGTrader CDN (no local copies).
-  // ============================================================
   {
     slug: "interior-house-5",
     title: "Interior House 5",
@@ -400,16 +396,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1994888/456cdb5d16/interior-house-5-sketchup-file-3d-model-456cdb5d16.jpg",
-        alt: "Interior House 5 interior — 3D visualization",
-        width: 1096,
-        height: 800,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/1994888/37ac69d131/interior-house-5-sketchup-file-3d-model-37ac69d131.webp",
-        alt: "Interior House 5 interior, view 1",
+        alt: "Interior House 5 interior — 3D visualization",
         width: 1800,
         height: 900,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1994888/456cdb5d16/interior-house-5-sketchup-file-3d-model-456cdb5d16.jpg",
+        alt: "Interior House 5 interior, view 1",
+        width: 1096,
+        height: 800,
       },
       {
         src: "https://img-new.cgtrader.com/items/1994888/a42573e4d6/interior-house-5-sketchup-file-3d-model-a42573e4d6.jpg",
@@ -439,15 +435,15 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1999165/ee6623f911/livingroom-walking-closet-master-bedroom-guest-room-3d-model-ee6623f911.jpg",
+        src: "https://img-new.cgtrader.com/items/1999165/c93afc1821/livingroom-walking-closet-master-bedroom-guest-room-3d-model-c93afc1821.webp",
         alt: "Living, Closet, Master & Guest interior — 3D visualization",
-        width: 1600,
+        width: 1555,
         height: 1200,
       },
       {
-        src: "https://img-new.cgtrader.com/items/1999165/c93afc1821/livingroom-walking-closet-master-bedroom-guest-room-3d-model-c93afc1821.webp",
+        src: "https://img-new.cgtrader.com/items/1999165/ee6623f911/livingroom-walking-closet-master-bedroom-guest-room-3d-model-ee6623f911.jpg",
         alt: "Living, Closet, Master & Guest interior, view 1",
-        width: 1555,
+        width: 1600,
         height: 1200,
       },
       {
@@ -484,16 +480,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/2000028/3928bd9377/livingroom-kitchen-diningroom-bedroom-3d-model-3928bd9377.jpg",
-        alt: "Living, Kitchen, Dining & Bedroom interior — 3D visualization",
-        width: 1600,
-        height: 1100,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/2000028/28f37cf2b7/livingroom-kitchen-diningroom-bedroom-3d-model-28f37cf2b7.webp",
-        alt: "Living, Kitchen, Dining & Bedroom interior, view 1",
+        alt: "Living, Kitchen, Dining & Bedroom interior — 3D visualization",
         width: 2000,
         height: 1125,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/2000028/3928bd9377/livingroom-kitchen-diningroom-bedroom-3d-model-3928bd9377.jpg",
+        alt: "Living, Kitchen, Dining & Bedroom interior, view 1",
+        width: 1600,
+        height: 1100,
       },
       {
         src: "https://img-new.cgtrader.com/items/2000028/20ae0130e9/livingroom-kitchen-diningroom-bedroom-3d-model-20ae0130e9.jpg",
@@ -529,15 +525,15 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1855679/eaa78f4819/apartement-studio-3d-model-eaa78f4819.jpg",
+        src: "https://img-new.cgtrader.com/items/1855679/32ca35505a/apartement-studio-3d-model-32ca35505a.webp",
         alt: "Apartment Studio interior — 3D visualization",
-        width: 1131,
+        width: 1200,
         height: 800,
       },
       {
-        src: "https://img-new.cgtrader.com/items/1855679/32ca35505a/apartement-studio-3d-model-32ca35505a.webp",
+        src: "https://img-new.cgtrader.com/items/1855679/eaa78f4819/apartement-studio-3d-model-eaa78f4819.jpg",
         alt: "Apartment Studio interior, view 1",
-        width: 1200,
+        width: 1131,
         height: 800,
       },
     ],
@@ -550,16 +546,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/4074457/531f35decb/classic-livingroom-and-diningroom-3d-model-531f35decb.jpg",
-        alt: "Classic Living & Dining interior — 3D visualization",
-        width: 3000,
-        height: 1357,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/4074457/3ec839be18/classic-livingroom-and-diningroom-3d-model-3ec839be18.webp",
-        alt: "Classic Living & Dining interior, view 1",
+        alt: "Classic Living & Dining interior — 3D visualization",
         width: 2000,
         height: 1125,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4074457/531f35decb/classic-livingroom-and-diningroom-3d-model-531f35decb.jpg",
+        alt: "Classic Living & Dining interior, view 1",
+        width: 3000,
+        height: 1357,
       },
       {
         src: "https://img-new.cgtrader.com/items/4074457/763147b1c5/classic-livingroom-and-diningroom-3d-model-763147b1c5.jpg",
@@ -595,16 +591,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1874100/5b2ea36d3e/3-bedroom-modern-with-wood-flooring-and-walls-3d-model-5b2ea36d3e.jpg",
-        alt: "3-Bedroom Modern interior — 3D visualization",
-        width: 6000,
-        height: 2572,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/1874100/ed3bf329f8/3-bedroom-modern-with-wood-flooring-and-walls-3d-model-ed3bf329f8.webp",
-        alt: "3-Bedroom Modern interior, view 1",
+        alt: "3-Bedroom Modern interior — 3D visualization",
         width: 1500,
         height: 800,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1874100/5b2ea36d3e/3-bedroom-modern-with-wood-flooring-and-walls-3d-model-5b2ea36d3e.jpg",
+        alt: "3-Bedroom Modern interior, view 1",
+        width: 6000,
+        height: 2572,
       },
       {
         src: "https://img-new.cgtrader.com/items/1874100/8304e8bbfe/3-bedroom-modern-with-wood-flooring-and-walls-3d-model-8304e8bbfe.jpg",
@@ -634,16 +630,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1868936/f84dbf5e30/apartement-one-bedroom-modern-3d-model-f84dbf5e30.webp",
-        alt: "Apartment One Bedroom Modern interior — 3D visualization",
-        width: 1840,
-        height: 1286,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/1868936/5a0febec93/apartement-one-bedroom-modern-3d-model-5a0febec93.webp",
-        alt: "Apartment One Bedroom Modern interior, view 1",
+        alt: "Apartment One Bedroom Modern interior — 3D visualization",
         width: 1044,
         height: 773,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1868936/f84dbf5e30/apartement-one-bedroom-modern-3d-model-f84dbf5e30.webp",
+        alt: "Apartment One Bedroom Modern interior, view 1",
+        width: 1840,
+        height: 1286,
       },
       {
         src: "https://img-new.cgtrader.com/items/1868936/304b06f451/apartement-one-bedroom-modern-3d-model-304b06f451.webp",
@@ -687,6 +683,24 @@ export const projects: Project[] = [
         width: 2000,
         height: 1125,
       },
+      {
+        src: "https://img-new.cgtrader.com/items/1868936/29e1813d82/apartement-one-bedroom-modern-3d-model-29e1813d82.webp",
+        alt: "Apartment One Bedroom Modern interior, view 9",
+        width: 2000,
+        height: 1125,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1868936/405b9131b2/apartement-one-bedroom-modern-3d-model-405b9131b2.webp",
+        alt: "Apartment One Bedroom Modern interior, view 10",
+        width: 2000,
+        height: 1125,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1868936/fa4bc98de4/apartement-one-bedroom-modern-3d-model-fa4bc98de4.webp",
+        alt: "Apartment One Bedroom Modern interior, view 11",
+        width: 2000,
+        height: 1125,
+      },
     ],
   },
   {
@@ -697,15 +711,15 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1855971/710ae8d1eb/apartement-3d-model-skp.jpg",
+        src: "https://img-new.cgtrader.com/items/1855971/31c6d46ee8/apartement-3d-model-31c6d46ee8.webp",
         alt: "Apartment interior — 3D visualization",
-        width: 855,
+        width: 825,
         height: 800,
       },
       {
-        src: "https://img-new.cgtrader.com/items/1855971/31c6d46ee8/apartement-3d-model-31c6d46ee8.webp",
+        src: "https://img-new.cgtrader.com/items/1855971/710ae8d1eb/apartement-3d-model-skp.jpg",
         alt: "Apartment interior, view 1",
-        width: 825,
+        width: 855,
         height: 800,
       },
       {
@@ -724,34 +738,34 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/4025541/57052b0096/luxurious-pantry-diningroom-and-livingroom-3d-model-57052b0096.jpg",
+        src: "https://img-new.cgtrader.com/items/4025541/ca5cdb7ef0/luxurious-pantry-diningroom-and-livingroom-3d-model-ca5cdb7ef0.jpg",
         alt: "Luxurious Pantry, Dining & Living interior — 3D visualization",
+        width: 2200,
+        height: 1444,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4025541/57052b0096/luxurious-pantry-diningroom-and-livingroom-3d-model-57052b0096.jpg",
+        alt: "Luxurious Pantry, Dining & Living interior, view 1",
         width: 2200,
         height: 1500,
       },
       {
         src: "https://img-new.cgtrader.com/items/4025541/ac569d4a72/luxurious-pantry-diningroom-and-livingroom-3d-model-ac569d4a72.webp",
-        alt: "Luxurious Pantry, Dining & Living interior, view 1",
+        alt: "Luxurious Pantry, Dining & Living interior, view 2",
         width: 2000,
         height: 1125,
       },
       {
         src: "https://img-new.cgtrader.com/items/4025541/0f36ee25ab/luxurious-pantry-diningroom-and-livingroom-3d-model-0f36ee25ab.jpg",
-        alt: "Luxurious Pantry, Dining & Living interior, view 2",
+        alt: "Luxurious Pantry, Dining & Living interior, view 3",
         width: 2200,
         height: 1500,
       },
       {
         src: "https://img-new.cgtrader.com/items/4025541/18a9c1603c/luxurious-pantry-diningroom-and-livingroom-3d-model-18a9c1603c.jpg",
-        alt: "Luxurious Pantry, Dining & Living interior, view 3",
+        alt: "Luxurious Pantry, Dining & Living interior, view 4",
         width: 2190,
         height: 1400,
-      },
-      {
-        src: "https://img-new.cgtrader.com/items/4025541/ca5cdb7ef0/luxurious-pantry-diningroom-and-livingroom-3d-model-ca5cdb7ef0.jpg",
-        alt: "Luxurious Pantry, Dining & Living interior, view 4",
-        width: 2200,
-        height: 1444,
       },
       {
         src: "https://img-new.cgtrader.com/items/4025541/bff723e0df/luxurious-pantry-diningroom-and-livingroom-3d-model-bff723e0df.jpg",
@@ -775,57 +789,123 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/4868716/57a256ad29/japandi-interior-3d-model-57a256ad29.jpg",
+        src: "https://img-new.cgtrader.com/items/4868716/eca779b2a2/japandi-interior-3d-model-eca779b2a2.jpg",
         alt: "Japandi Interior interior — 3D visualization",
+        width: 2000,
+        height: 1500,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4868716/57a256ad29/japandi-interior-3d-model-57a256ad29.jpg",
+        alt: "Japandi Interior interior, view 1",
         width: 2200,
         height: 1500,
       },
       {
         src: "https://img-new.cgtrader.com/items/4868716/484a0784d1/japandi-interior-3d-model-484a0784d1.webp",
-        alt: "Japandi Interior interior, view 1",
+        alt: "Japandi Interior interior, view 2",
         width: 2000,
         height: 1125,
       },
       {
         src: "https://img-new.cgtrader.com/items/4868716/f7fcc51d8a/japandi-interior-3d-model-f7fcc51d8a.jpg",
-        alt: "Japandi Interior interior, view 2",
-        width: 2200,
-        height: 1500,
-      },
-      {
-        src: "https://img-new.cgtrader.com/items/4868716/719f539562/japandi-interior-3d-model-719f539562.jpg",
         alt: "Japandi Interior interior, view 3",
         width: 2200,
         height: 1500,
       },
       {
-        src: "https://img-new.cgtrader.com/items/4868716/306ae51e7f/japandi-interior-3d-model-306ae51e7f.jpg",
+        src: "https://img-new.cgtrader.com/items/4868716/719f539562/japandi-interior-3d-model-719f539562.jpg",
         alt: "Japandi Interior interior, view 4",
         width: 2200,
         height: 1500,
       },
       {
-        src: "https://img-new.cgtrader.com/items/4868716/85978bde0c/japandi-interior-3d-model-85978bde0c.jpg",
+        src: "https://img-new.cgtrader.com/items/4868716/306ae51e7f/japandi-interior-3d-model-306ae51e7f.jpg",
         alt: "Japandi Interior interior, view 5",
         width: 2200,
         height: 1500,
       },
       {
-        src: "https://img-new.cgtrader.com/items/4868716/6cca0eaeea/japandi-interior-3d-model-6cca0eaeea.jpg",
+        src: "https://img-new.cgtrader.com/items/4868716/85978bde0c/japandi-interior-3d-model-85978bde0c.jpg",
         alt: "Japandi Interior interior, view 6",
         width: 2200,
         height: 1500,
       },
       {
-        src: "https://img-new.cgtrader.com/items/4868716/0d8ba87433/japandi-interior-3d-model-0d8ba87433.jpg",
+        src: "https://img-new.cgtrader.com/items/4868716/6cca0eaeea/japandi-interior-3d-model-6cca0eaeea.jpg",
         alt: "Japandi Interior interior, view 7",
+        width: 2200,
+        height: 1500,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4868716/0d8ba87433/japandi-interior-3d-model-0d8ba87433.jpg",
+        alt: "Japandi Interior interior, view 8",
         width: 2000,
         height: 1500,
       },
       {
         src: "https://img-new.cgtrader.com/items/4868716/88ff7625fe/japandi-interior-3d-model-88ff7625fe.jpg",
-        alt: "Japandi Interior interior, view 8",
+        alt: "Japandi Interior interior, view 9",
         width: 2000,
+        height: 1500,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4868716/aa64483db0/japandi-interior-3d-model-aa64483db0.jpg",
+        alt: "Japandi Interior interior, view 10",
+        width: 1816,
+        height: 1500,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4868716/aa18a166d1/japandi-interior-3d-model-aa18a166d1.jpg",
+        alt: "Japandi Interior interior, view 11",
+        width: 1699,
+        height: 1500,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4868716/7175791756/japandi-interior-3d-model-7175791756.jpg",
+        alt: "Japandi Interior interior, view 12",
+        width: 2000,
+        height: 1500,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4868716/c9a10213b4/japandi-interior-3d-model-c9a10213b4.jpg",
+        alt: "Japandi Interior interior, view 13",
+        width: 2000,
+        height: 1500,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4868716/e2c4eb4676/japandi-interior-3d-model-e2c4eb4676.jpg",
+        alt: "Japandi Interior interior, view 14",
+        width: 2000,
+        height: 1500,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4868716/1a164798aa/japandi-interior-3d-model-1a164798aa.jpg",
+        alt: "Japandi Interior interior, view 15",
+        width: 2000,
+        height: 1500,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4868716/a0afa956bc/japandi-interior-3d-model-a0afa956bc.jpg",
+        alt: "Japandi Interior interior, view 16",
+        width: 2000,
+        height: 1500,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4868716/66112548ad/japandi-interior-3d-model-66112548ad.jpg",
+        alt: "Japandi Interior interior, view 17",
+        width: 2000,
+        height: 1500,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4868716/04458a8117/japandi-interior-3d-model-04458a8117.jpg",
+        alt: "Japandi Interior interior, view 18",
+        width: 2200,
+        height: 1500,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4868716/21c28971fe/japandi-interior-3d-model-21c28971fe.jpg",
+        alt: "Japandi Interior interior, view 19",
+        width: 2200,
         height: 1500,
       },
     ],
@@ -838,16 +918,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/2128162/accf1c7d37/toraja-restaurant-3d-model-accf1c7d37.jpg",
-        alt: "Toraja Restaurant interior — 3D visualization",
-        width: 1956,
-        height: 737,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/2128162/7ca3fe4880/toraja-restaurant-3d-model-7ca3fe4880.webp",
-        alt: "Toraja Restaurant interior, view 1",
+        alt: "Toraja Restaurant interior — 3D visualization",
         width: 2000,
         height: 1125,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/2128162/accf1c7d37/toraja-restaurant-3d-model-accf1c7d37.jpg",
+        alt: "Toraja Restaurant interior, view 1",
+        width: 1956,
+        height: 737,
       },
       {
         src: "https://img-new.cgtrader.com/items/2128162/c433c3c51b/toraja-restaurant-3d-model-c433c3c51b.jpg",
@@ -877,13 +957,13 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1866923/97355c8d37/traditional-shopping-store-3d-model-97355c8d37.jpg",
+        src: "https://img-new.cgtrader.com/items/1866923/81a9827c63/traditional-shopping-store-3d-model-81a9827c63.webp",
         alt: "Traditional Shopping Store interior — 3D visualization",
         width: 1200,
         height: 697,
       },
       {
-        src: "https://img-new.cgtrader.com/items/1866923/81a9827c63/traditional-shopping-store-3d-model-81a9827c63.webp",
+        src: "https://img-new.cgtrader.com/items/1866923/97355c8d37/traditional-shopping-store-3d-model-97355c8d37.jpg",
         alt: "Traditional Shopping Store interior, view 1",
         width: 1200,
         height: 697,
@@ -930,6 +1010,18 @@ export const projects: Project[] = [
         width: 1200,
         height: 697,
       },
+      {
+        src: "https://img-new.cgtrader.com/items/1866923/05465b4616/traditional-shopping-store-3d-model-05465b4616.jpg",
+        alt: "Traditional Shopping Store interior, view 9",
+        width: 1200,
+        height: 697,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1866923/6f6871d878/traditional-shopping-store-3d-model-6f6871d878.jpg",
+        alt: "Traditional Shopping Store interior, view 10",
+        width: 1200,
+        height: 697,
+      },
     ],
   },
   {
@@ -940,16 +1032,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1973743/4a14a39745/hulala-dan-waffleicious-booth-design-for-ice-cream-and-waffle-3d-model-4a14a39745.jpg",
+        src: "https://img-new.cgtrader.com/items/1973743/ac62c3e8f4/hulala-dan-waffleicious-booth-design-for-ice-cream-and-waffle-3d-model-ac62c3e8f4.webp",
         alt: "Hulala & Waffleicious Booth interior — 3D visualization",
         width: 1200,
-        height: 1000,
+        height: 967,
       },
       {
-        src: "https://img-new.cgtrader.com/items/1973743/ac62c3e8f4/hulala-dan-waffleicious-booth-design-for-ice-cream-and-waffle-3d-model-ac62c3e8f4.webp",
+        src: "https://img-new.cgtrader.com/items/1973743/4a14a39745/hulala-dan-waffleicious-booth-design-for-ice-cream-and-waffle-3d-model-4a14a39745.jpg",
         alt: "Hulala & Waffleicious Booth interior, view 1",
         width: 1200,
-        height: 967,
+        height: 1000,
       },
       {
         src: "https://img-new.cgtrader.com/items/1973743/f775db3917/hulala-dan-waffleicious-booth-design-for-ice-cream-and-waffle-3d-model-f775db3917.jpg",
@@ -973,16 +1065,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1869034/c76f0a8321/interior-make-up-artist-3d-model-c76f0a8321.webp",
-        alt: "Make-Up Artist Interior interior — 3D visualization",
-        width: 2000,
-        height: 1125,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/1869034/14fdbcd78c/interior-make-up-artist-3d-model-14fdbcd78c.webp",
-        alt: "Make-Up Artist Interior interior, view 1",
+        alt: "Make-Up Artist Interior interior — 3D visualization",
         width: 1204,
         height: 672,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1869034/c76f0a8321/interior-make-up-artist-3d-model-c76f0a8321.webp",
+        alt: "Make-Up Artist Interior interior, view 1",
+        width: 2000,
+        height: 1125,
       },
       {
         src: "https://img-new.cgtrader.com/items/1869034/6da8785322/interior-make-up-artist-3d-model-6da8785322.webp",
@@ -1030,16 +1122,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/2153168/0357da7fb5/beauty-clinic-3d-model-0357da7fb5.jpg",
-        alt: "Beauty Clinic interior — 3D visualization",
-        width: 1256,
-        height: 1354,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/2153168/0ddb48d418/beauty-clinic-3d-model-0ddb48d418.webp",
-        alt: "Beauty Clinic interior, view 1",
+        alt: "Beauty Clinic interior — 3D visualization",
         width: 2000,
         height: 1125,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/2153168/0357da7fb5/beauty-clinic-3d-model-0357da7fb5.jpg",
+        alt: "Beauty Clinic interior, view 1",
+        width: 1256,
+        height: 1354,
       },
       {
         src: "https://img-new.cgtrader.com/items/2153168/abd14ce146/beauty-clinic-3d-model-abd14ce146.jpg",
@@ -1093,13 +1185,13 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/4158571/b3334046e9/beauty-salon-ever-green-3d-model-b3334046e9.jpg",
+        src: "https://img-new.cgtrader.com/items/4158571/c35b8125e8/beauty-salon-ever-green-3d-model-c35b8125e8.webp",
         alt: "Beauty Salon Ever Green interior — 3D visualization",
         width: 2000,
         height: 1200,
       },
       {
-        src: "https://img-new.cgtrader.com/items/4158571/c35b8125e8/beauty-salon-ever-green-3d-model-c35b8125e8.webp",
+        src: "https://img-new.cgtrader.com/items/4158571/b3334046e9/beauty-salon-ever-green-3d-model-b3334046e9.jpg",
         alt: "Beauty Salon Ever Green interior, view 1",
         width: 2000,
         height: 1200,
@@ -1150,16 +1242,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1866971/6219b14a5a/apartement-one-bedroom-3d-model-6219b14a5a.jpg",
-        alt: "Apartment One Bedroom interior — 3D visualization",
-        width: 1648,
-        height: 1286,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/1866971/5649d57cdc/apartement-one-bedroom-3d-model-5649d57cdc.webp",
-        alt: "Apartment One Bedroom interior, view 1",
+        alt: "Apartment One Bedroom interior — 3D visualization",
         width: 1110,
         height: 800,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1866971/6219b14a5a/apartement-one-bedroom-3d-model-6219b14a5a.jpg",
+        alt: "Apartment One Bedroom interior, view 1",
+        width: 1648,
+        height: 1286,
       },
       {
         src: "https://img-new.cgtrader.com/items/1866971/143b3f1e55/apartement-one-bedroom-3d-model-143b3f1e55.jpg",
@@ -1189,33 +1281,33 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1902105/2f06f9e1dd/interior-exterior-and-layout-house-3d-model-2f06f9e1dd.jpg",
+        src: "https://img-new.cgtrader.com/items/1902105/e0969a7da7/interior-exterior-and-layout-house-3d-model-e0969a7da7.jpg",
         alt: "Interior & Exterior Layout House interior — 3D visualization",
+        width: 1724,
+        height: 1000,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1902105/2f06f9e1dd/interior-exterior-and-layout-house-3d-model-2f06f9e1dd.jpg",
+        alt: "Interior & Exterior Layout House interior, view 1",
         width: 2000,
         height: 823,
       },
       {
         src: "https://img-new.cgtrader.com/items/1902105/c9d601f44a/interior-exterior-and-layout-house-3d-model-c9d601f44a.webp",
-        alt: "Interior & Exterior Layout House interior, view 1",
+        alt: "Interior & Exterior Layout House interior, view 2",
         width: 2000,
         height: 1125,
       },
       {
         src: "https://img-new.cgtrader.com/items/1902105/0128fb727d/interior-exterior-and-layout-house-3d-model-0128fb727d.jpg",
-        alt: "Interior & Exterior Layout House interior, view 2",
-        width: 2000,
-        height: 1000,
-      },
-      {
-        src: "https://img-new.cgtrader.com/items/1902105/e4f4ce30bf/interior-exterior-and-layout-house-3d-model-e4f4ce30bf.jpg",
         alt: "Interior & Exterior Layout House interior, view 3",
         width: 2000,
         height: 1000,
       },
       {
-        src: "https://img-new.cgtrader.com/items/1902105/e0969a7da7/interior-exterior-and-layout-house-3d-model-e0969a7da7.jpg",
+        src: "https://img-new.cgtrader.com/items/1902105/e4f4ce30bf/interior-exterior-and-layout-house-3d-model-e4f4ce30bf.jpg",
         alt: "Interior & Exterior Layout House interior, view 4",
-        width: 1724,
+        width: 2000,
         height: 1000,
       },
       {
@@ -1242,6 +1334,18 @@ export const projects: Project[] = [
         width: 1808,
         height: 2684,
       },
+      {
+        src: "https://img-new.cgtrader.com/items/1902105/a22cc94a2e/interior-exterior-and-layout-house-3d-model-a22cc94a2e.jpg",
+        alt: "Interior & Exterior Layout House interior, view 9",
+        width: 1808,
+        height: 2684,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1902105/4a95ed64ad/interior-exterior-and-layout-house-3d-model-4a95ed64ad.jpg",
+        alt: "Interior & Exterior Layout House interior, view 10",
+        width: 2000,
+        height: 823,
+      },
     ],
   },
   {
@@ -1252,16 +1356,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1855982/a86b2dde67/colonial-bedroom-3d-model-a86b2dde67.jpg",
-        alt: "Colonial Bedroom interior — 3D visualization",
-        width: 1468,
-        height: 1100,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/1855982/038cbe7494/colonial-bedroom-3d-model-038cbe7494.webp",
-        alt: "Colonial Bedroom interior, view 1",
+        alt: "Colonial Bedroom interior — 3D visualization",
         width: 2000,
         height: 1125,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1855982/a86b2dde67/colonial-bedroom-3d-model-a86b2dde67.jpg",
+        alt: "Colonial Bedroom interior, view 1",
+        width: 1468,
+        height: 1100,
       },
     ],
   },
@@ -1273,16 +1377,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/2739430/ab061eb155/modern-man-cave-3d-model-ab061eb155.jpg",
-        alt: "Modern Man Cave interior — 3D visualization",
-        width: 1680,
-        height: 1218,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/2739430/dc3019638c/modern-man-cave-3d-model-dc3019638c.webp",
-        alt: "Modern Man Cave interior, view 1",
+        alt: "Modern Man Cave interior — 3D visualization",
         width: 2000,
         height: 1125,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/2739430/ab061eb155/modern-man-cave-3d-model-ab061eb155.jpg",
+        alt: "Modern Man Cave interior, view 1",
+        width: 1680,
+        height: 1218,
       },
       {
         src: "https://img-new.cgtrader.com/items/2739430/273fb59505/modern-man-cave-3d-model-273fb59505.jpg",
@@ -1365,6 +1469,78 @@ export const projects: Project[] = [
         width: 2200,
         height: 1400,
       },
+      {
+        src: "https://img-new.cgtrader.com/items/4452135/67fed41eca/simple-classic-house-3d-model-67fed41eca.jpg",
+        alt: "Simple Classic House interior, view 9",
+        width: 2200,
+        height: 1384,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4452135/276a299a1b/simple-classic-house-3d-model-276a299a1b.jpg",
+        alt: "Simple Classic House interior, view 10",
+        width: 2200,
+        height: 1400,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4452135/d35f03ed35/simple-classic-house-3d-model-d35f03ed35.jpg",
+        alt: "Simple Classic House interior, view 11",
+        width: 2200,
+        height: 1400,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4452135/1cd0ebb1e9/simple-classic-house-3d-model-1cd0ebb1e9.jpg",
+        alt: "Simple Classic House interior, view 12",
+        width: 2200,
+        height: 1400,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4452135/8378befaad/simple-classic-house-3d-model-8378befaad.jpg",
+        alt: "Simple Classic House interior, view 13",
+        width: 2200,
+        height: 1400,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4452135/e21421805b/simple-classic-house-3d-model-e21421805b.jpg",
+        alt: "Simple Classic House interior, view 14",
+        width: 2116,
+        height: 1400,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4452135/1db18559c8/simple-classic-house-3d-model-1db18559c8.jpg",
+        alt: "Simple Classic House interior, view 15",
+        width: 2044,
+        height: 1400,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4452135/af119d0a64/simple-classic-house-3d-model-af119d0a64.jpg",
+        alt: "Simple Classic House interior, view 16",
+        width: 2200,
+        height: 1400,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4452135/6b34f9c6e2/simple-classic-house-3d-model-6b34f9c6e2.jpg",
+        alt: "Simple Classic House interior, view 17",
+        width: 2120,
+        height: 1400,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4452135/c6104c435a/simple-classic-house-3d-model-c6104c435a.jpg",
+        alt: "Simple Classic House interior, view 18",
+        width: 2104,
+        height: 1400,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4452135/1cd0c64c31/simple-classic-house-3d-model-1cd0c64c31.jpg",
+        alt: "Simple Classic House interior, view 19",
+        width: 2200,
+        height: 1400,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/4452135/8d5793a413/simple-classic-house-3d-model-8d5793a413.jpg",
+        alt: "Simple Classic House interior, view 20",
+        width: 2200,
+        height: 1400,
+      },
     ],
   },
   {
@@ -1375,16 +1551,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1879633/cc45f0a751/master-bedroom-3d-model-cc45f0a751.jpg",
-        alt: "Master Bedroom II interior — 3D visualization",
-        width: 6000,
-        height: 2572,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/1879633/f8bfcca510/master-bedroom-3d-model-f8bfcca510.webp",
-        alt: "Master Bedroom II interior, view 1",
+        alt: "Master Bedroom II interior — 3D visualization",
         width: 2000,
         height: 1125,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1879633/cc45f0a751/master-bedroom-3d-model-cc45f0a751.jpg",
+        alt: "Master Bedroom II interior, view 1",
+        width: 6000,
+        height: 2572,
       },
       {
         src: "https://img-new.cgtrader.com/items/1879633/45a9e06387/master-bedroom-3d-model-45a9e06387.jpg",
@@ -1428,6 +1604,18 @@ export const projects: Project[] = [
         width: 3873,
         height: 2143,
       },
+      {
+        src: "https://img-new.cgtrader.com/items/1879633/0b5ecf921f/master-bedroom-3d-model-0b5ecf921f.jpg",
+        alt: "Master Bedroom II interior, view 9",
+        width: 4424,
+        height: 2143,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1879633/d273f26afc/master-bedroom-3d-model-d273f26afc.jpg",
+        alt: "Master Bedroom II interior, view 10",
+        width: 6000,
+        height: 2572,
+      },
     ],
   },
   {
@@ -1438,13 +1626,13 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1856292/0b471a16be/simple-house-3d-model-0b471a16be.webp",
+        src: "https://img-new.cgtrader.com/items/1856292/fa201cb91d/simple-house-3d-model-fa201cb91d.webp",
         alt: "Simple House interior — 3D visualization",
         width: 1200,
         height: 600,
       },
       {
-        src: "https://img-new.cgtrader.com/items/1856292/fa201cb91d/simple-house-3d-model-fa201cb91d.webp",
+        src: "https://img-new.cgtrader.com/items/1856292/0b471a16be/simple-house-3d-model-0b471a16be.webp",
         alt: "Simple House interior, view 1",
         width: 1200,
         height: 600,
@@ -1471,16 +1659,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1856924/c833ca3c91/guest-room-3d-model-c833ca3c91.jpg",
-        alt: "Guest Room interior — 3D visualization",
-        width: 5000,
-        height: 2030,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/1856924/51b52347fb/guest-room-3d-model-51b52347fb.webp",
-        alt: "Guest Room interior, view 1",
+        alt: "Guest Room interior — 3D visualization",
         width: 1291,
         height: 900,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1856924/c833ca3c91/guest-room-3d-model-c833ca3c91.jpg",
+        alt: "Guest Room interior, view 1",
+        width: 5000,
+        height: 2030,
       },
       {
         src: "https://img-new.cgtrader.com/items/1856924/f996e56f9b/guest-room-3d-model-f996e56f9b.jpg",
@@ -1522,16 +1710,16 @@ export const projects: Project[] = [
       "Interior 3D visualization — SketchUp + V-Ray.",
     images: [
       {
-        src: "https://img-new.cgtrader.com/items/1994299/addd8c6543/master-bedroom-3d-model-addd8c6543.webp",
-        alt: "Master Bedroom I interior — 3D visualization",
-        width: 2000,
-        height: 1125,
-      },
-      {
         src: "https://img-new.cgtrader.com/items/1994299/990fab4ebb/master-bedroom-3d-model-990fab4ebb.jpg",
-        alt: "Master Bedroom I interior, view 1",
+        alt: "Master Bedroom I interior — 3D visualization",
         width: 1200,
         height: 700,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1994299/addd8c6543/master-bedroom-3d-model-addd8c6543.webp",
+        alt: "Master Bedroom I interior, view 1",
+        width: 2000,
+        height: 1125,
       },
       {
         src: "https://img-new.cgtrader.com/items/1994299/6918ca46fa/master-bedroom-3d-model-6918ca46fa.jpg",
@@ -1574,6 +1762,12 @@ export const projects: Project[] = [
         alt: "Master Bedroom I interior, view 8",
         width: 1362,
         height: 591,
+      },
+      {
+        src: "https://img-new.cgtrader.com/items/1994299/a6e25c511e/master-bedroom-3d-model-a6e25c511e.jpg",
+        alt: "Master Bedroom I interior, view 9",
+        width: 1290,
+        height: 553,
       },
     ],
   },
@@ -1791,9 +1985,14 @@ export const projects: Project[] = [
         width: 1200,
         height: 800,
       },
+      {
+        src: "https://img-new.cgtrader.com/items/1855957/f4e77789ca/office-room-3d-model-f4e77789ca.jpg",
+        alt: "Office Room interior, view 9",
+        width: 1200,
+        height: 800,
+      },
     ],
   },
-
 ];
 
 export function getProject(slug: string): Project | undefined {
