@@ -1,17 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { projects } from "@/lib/portfolio";
 import { withBasePath } from "@/lib/site";
+import { useI18n } from "@/components/i18n/LanguageProvider";
 import { Carousel } from "@/components/ui/carousel";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { BlurFade } from "@/components/ui/motion";
 import { Parallax } from "@/components/ui/parallax";
 
-/**
- * Featured real projects in a full-width editorial carousel. Only projects
- * with real photography are shown (the rest are illustrative placeholders).
- */
 export function FeaturedCarousel() {
+  const { t } = useI18n();
   const featured = projects.filter((p) => p.images && p.images.length > 0);
 
   const slides = featured.map((project) => {
@@ -59,10 +59,11 @@ export function FeaturedCarousel() {
         <BlurFade>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
-              eyebrow="Featured"
+              eyebrow={t("featured.eyebrow")}
               title={
                 <>
-                  Signature <em className="italic">projects</em>
+                  {t("featured.title.1")}{" "}
+                  <em className="italic">{t("featured.title.em")}</em>
                 </>
               }
             />
@@ -70,7 +71,7 @@ export function FeaturedCarousel() {
               href="/portfolio"
               className="link-underline text-sm font-medium text-ink"
             >
-              View all projects
+              {t("featured.viewAll")}
             </Link>
           </div>
         </BlurFade>

@@ -1,11 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import { projects } from "@/lib/portfolio";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { PlaceholderNote } from "@/components/site/PlaceholderNote";
+import { useI18n } from "@/components/i18n/LanguageProvider";
 
 export function PortfolioSection() {
+  const { t } = useI18n();
   const featured = projects.slice(0, 6);
 
   return (
@@ -14,10 +18,11 @@ export function PortfolioSection() {
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
-              eyebrow="Portfolio"
+              eyebrow={t("portfolio.eyebrow")}
               title={
                 <>
-                  Selected <em className="italic">work</em>
+                  {t("portfolio.title.1")}{" "}
+                  <em className="italic">{t("portfolio.title.em")}</em>
                 </>
               }
             />
@@ -25,7 +30,7 @@ export function PortfolioSection() {
               href="/portfolio"
               className="link-underline text-sm font-medium text-ink"
             >
-              View all projects
+              {t("portfolio.viewAll")}
             </Link>
           </div>
         </Reveal>
@@ -38,10 +43,7 @@ export function PortfolioSection() {
             ))}
           </div>
         </Reveal>
-        <PlaceholderNote>
-          Select projects feature real photography — others are illustrative
-          previews
-        </PlaceholderNote>
+        <PlaceholderNote>{t("portfolio.note")}</PlaceholderNote>
       </div>
     </section>
   );

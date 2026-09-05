@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { site, withBasePath } from "@/lib/site";
+import { useI18n } from "@/components/i18n/LanguageProvider";
+import { LanguageToggle } from "@/components/i18n/LanguageToggle";
 
 function isActivePath(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -13,6 +15,7 @@ function isActivePath(pathname: string, href: string) {
 
 export function Header() {
   const pathname = usePathname();
+  const { t, nav } = useI18n();
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const didOpen = useRef(false);
@@ -62,7 +65,7 @@ export function Header() {
 
         {/* Desktop navigation */}
         <nav aria-label="Primary" className="hidden items-center gap-7 xl:flex">
-          {site.nav.map((item) => {
+          {nav.map((item) => {
             const active = isActivePath(pathname, item.href);
             return (
               <Link
@@ -83,8 +86,9 @@ export function Header() {
               </Link>
             );
           })}
+          <LanguageToggle className="text-ink" />
           <Link href={site.cta.href} className="btn btn-dark btn-sm ml-1">
-            {site.cta.label}
+            {t("cta.startProject")}
           </Link>
         </nav>
 
@@ -126,12 +130,12 @@ export function Header() {
         aria-label="Mobile"
         className={`overflow-hidden border-line transition-all duration-300 ease-in-out xl:hidden ${
           open
-            ? "visible max-h-[520px] border-t opacity-100"
+            ? "visible max-h-[640px] border-t opacity-100"
             : "invisible max-h-0 opacity-0"
         }`}
       >
         <div className="container-site flex flex-col py-4">
-          {site.nav.map((item) => {
+          {nav.map((item) => {
             const active = isActivePath(pathname, item.href);
             return (
               <Link
@@ -147,8 +151,14 @@ export function Header() {
               </Link>
             );
           })}
-          <Link href={site.cta.href} onClick={close} className="btn btn-dark mt-6">
-            {site.cta.label}
+          <div className="flex items-center justify-between py-4">
+            <span className="text-[0.7rem] uppercase tracking-[0.2em] text-faint">
+              Language
+            </span>
+            <LanguageToggle className="text-ink" />
+          </div>
+          <Link href={site.cta.href} onClick={close} className="btn btn-dark mt-2">
+            {t("cta.startProject")}
           </Link>
         </div>
       </nav>

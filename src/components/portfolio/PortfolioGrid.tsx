@@ -3,19 +3,28 @@
 import { useState } from "react";
 import { categories, projects } from "@/lib/portfolio";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
+import { useI18n } from "@/components/i18n/LanguageProvider";
 
 export function PortfolioGrid() {
+  const { t } = useI18n();
   const [active, setActive] = useState<string>("All");
   const filtered =
     active === "All"
       ? projects
       : projects.filter((p) => p.category === active);
 
+  const labelFor = (category: string) =>
+    category === "All"
+      ? t("portfolio.filter.all")
+      : category === "Residential"
+        ? t("portfolio.filter.residential")
+        : t("portfolio.filter.commercial");
+
   return (
     <div>
       <div
         role="group"
-        aria-label="Filter projects by category"
+        aria-label={t("portfolio.filter.aria")}
         className="flex flex-wrap gap-2"
       >
         {categories.map((category) => {
@@ -32,7 +41,7 @@ export function PortfolioGrid() {
                   : "border-line text-stone hover:border-ink hover:text-ink"
               }`}
             >
-              {category}
+              {labelFor(category)}
             </button>
           );
         })}

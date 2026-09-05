@@ -1,7 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { site, withBasePath } from "@/lib/site";
-import { services } from "@/lib/content";
+import { useI18n } from "@/components/i18n/LanguageProvider";
 import {
   MailIcon,
   MapPinIcon,
@@ -13,6 +15,7 @@ import {
 export function Footer() {
   const year = new Date().getFullYear();
   const primary = site.phones[0];
+  const { t, nav, services } = useI18n();
 
   return (
     <footer className="border-t border-line bg-secondary">
@@ -27,8 +30,7 @@ export function Footer() {
             className="h-10 w-auto"
           />
           <p className="mt-6 max-w-sm text-sm leading-6 text-stone">
-            Interior design, architecture, and 3D interior visualization —
-            beautiful, functional, and timeless spaces.
+            {t("footer.about")}
           </p>
           <address className="mt-6 text-sm not-italic leading-6 text-stone">
             {site.location.line1}
@@ -42,10 +44,10 @@ export function Footer() {
         {/* Explore */}
         <nav aria-label="Footer" className="lg:col-span-2">
           <p className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-ink">
-            Explore
+            {t("footer.explore")}
           </p>
           <ul className="mt-5 space-y-2.5">
-            {site.nav.map((item) => (
+            {nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
@@ -61,7 +63,7 @@ export function Footer() {
         {/* Services */}
         <nav aria-label="Services" className="lg:col-span-3">
           <p className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-ink">
-            Services
+            {t("footer.services")}
           </p>
           <ul className="mt-5 space-y-2.5">
             {services.map((service) => (
@@ -80,7 +82,7 @@ export function Footer() {
         {/* Contact + social */}
         <div className="lg:col-span-3">
           <p className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-ink">
-            Contact
+            {t("footer.contact")}
           </p>
           <ul className="mt-5 space-y-2.5 text-sm">
             <li>
@@ -111,7 +113,7 @@ export function Footer() {
                 className="flex items-center gap-2.5 text-stone transition-colors hover:text-ink"
               >
                 <WhatsAppIcon className="h-4 w-4 shrink-0 text-faint" />
-                WhatsApp
+                {t("footer.whatsapp")}
               </a>
             </li>
             <li>
@@ -122,7 +124,7 @@ export function Footer() {
                 className="flex items-center gap-2.5 text-stone transition-colors hover:text-ink"
               >
                 <MapPinIcon className="h-4 w-4 shrink-0 text-faint" />
-                View on Google Maps
+                {t("footer.maps")}
               </a>
             </li>
           </ul>
@@ -148,9 +150,9 @@ export function Footer() {
       <div className="border-t border-line">
         <div className="container-site flex flex-col gap-2 py-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.legalName}. All rights reserved.
+            © {year} {site.legalName}. {t("footer.rights")}
           </p>
-          <p>{site.tagline}</p>
+          <p>{t("footer.tagline")}</p>
         </div>
       </div>
     </footer>

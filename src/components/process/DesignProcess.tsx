@@ -1,17 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { processSteps } from "@/lib/content";
+import { useI18n } from "@/components/i18n/LanguageProvider";
 import { PlaceholderArt } from "@/components/site/PlaceholderArt";
 
 /**
  * DesignProcess — an interactive, editorial timeline of the studio's working
  * flow. Desktop shows a horizontal step rail with a drawing progress line and
- * a detail panel; mobile collapses into a vertical timeline. All content is
- * always in the DOM (never hidden behind hover), and motion is gated behind
- * prefers-reduced-motion + a no-JS fallback (see globals.css / layout).
+ * a detail panel; mobile collapses into a vertical timeline.
  */
 export function DesignProcess() {
+  const { t, process: processSteps } = useI18n();
   const steps = processSteps;
   const [active, setActive] = useState(0);
   const [inView, setInView] = useState(false);
@@ -104,7 +103,7 @@ export function DesignProcess() {
                   {activeStep.number}
                 </span>
                 <span className="text-[0.7rem] font-medium uppercase tracking-[0.3em] text-faint">
-                  Step {activeStep.number} / 0{steps.length}
+                  {t("process.step")} {activeStep.number} / 0{steps.length}
                 </span>
               </div>
               <h3 className="mt-6 font-display text-[clamp(1.9rem,3.5vw,3rem)] font-medium leading-tight text-ink">

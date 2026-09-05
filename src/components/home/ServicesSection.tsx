@@ -1,18 +1,22 @@
+"use client";
+
 import Link from "next/link";
-import { services } from "@/lib/content";
+import { useI18n } from "@/components/i18n/LanguageProvider";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function ServicesSection() {
+  const { t, services } = useI18n();
+
   return (
     <section className="border-t border-line bg-secondary">
       <div className="container-site py-24 lg:py-32">
         <Reveal>
           <SectionHeading
-            eyebrow="Services"
+            eyebrow={t("services.eyebrow")}
             title={
               <>
-                What we <em className="italic">do</em>
+                {t("services.title.1")} <em className="italic">{t("services.title.em")}</em>
               </>
             }
           />
@@ -36,7 +40,7 @@ export function ServicesSection() {
                   </p>
                 </div>
                 <span className="hidden items-center gap-2 text-sm font-medium text-ink transition-transform duration-300 group-hover:translate-x-1 md:inline-flex">
-                  Explore <span aria-hidden="true">→</span>
+                  {t("services.explore")} <span aria-hidden="true">→</span>
                 </span>
               </Link>
             </Reveal>

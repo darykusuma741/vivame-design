@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import { site } from "@/lib/site";
+import { useI18n } from "@/components/i18n/LanguageProvider";
 import {
   canonicalBase,
   facebookShareUrl,
@@ -193,13 +194,15 @@ interface ShareButtonProps {
 }
 
 export function ShareButton({
-  label = "Share",
+  label,
   title,
   text,
   url,
   subject,
   className,
 }: ShareButtonProps) {
+  const { t } = useI18n();
+  const resolvedLabel = label ?? t("share.label");
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -299,7 +302,7 @@ export function ShareButton({
     }
   }, [payload, close]);
 
-  const ariaLabel = subject ? `Share ${subject}` : "Share";
+  const ariaLabel = subject ? `${t("share.label")} ${subject}` : t("share.label");
 
   const socialLinks = payload
     ? [
@@ -322,7 +325,7 @@ export function ShareButton({
         className="btn btn-outline btn-sm"
       >
         <ShareIcon className="h-4 w-4" />
-        <span>{label}</span>
+        <span>{resolvedLabel}</span>
       </button>
 
       {open && payload && (
@@ -351,7 +354,7 @@ export function ShareButton({
             }`}
           >
             <div className="flex items-center justify-between border-b border-line px-5 py-4">
-              <h2 className="eyebrow">Share</h2>
+              <h2 className="eyebrow">{t("share.label")}</h2>
               <button
                 type="button"
                 onClick={close}
@@ -407,7 +410,7 @@ export function ShareButton({
                     )}
                   </span>
                   <span className="flex-1 text-left text-sm font-medium text-ink">
-                    {copied ? "Link copied" : "Copy link"}
+                    {copied ? t("share.copied") : t("share.copy")}
                   </span>
                 </button>
               </li>
@@ -423,7 +426,7 @@ export function ShareButton({
                       <ShareIcon className="h-[18px] w-[18px]" />
                     </span>
                     <span className="flex-1 text-left text-sm font-medium text-ink">
-                      Share via device
+                      {t("share.device")}
                     </span>
                   </button>
                 </li>

@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "@/lib/portfolio";
 import { withBasePath } from "@/lib/site";
 import { PlaceholderArt } from "@/components/site/PlaceholderArt";
+import { useI18n } from "@/components/i18n/LanguageProvider";
 
 export function ProjectCard({ project }: { project: Project }) {
+  const { t } = useI18n();
   const cover = project.images?.[0];
 
   return (
@@ -30,7 +34,6 @@ export function ProjectCard({ project }: { project: Project }) {
           />
         )}
 
-        {/* subtle mat + hover depth */}
         <span
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 border border-ink/10"
@@ -47,7 +50,7 @@ export function ProjectCard({ project }: { project: Project }) {
         )}
 
         <span className="pointer-events-none absolute bottom-4 left-4 translate-y-2 bg-paper/95 px-3.5 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-ink opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          View project
+          {t("card.viewProject")}
         </span>
       </div>
 

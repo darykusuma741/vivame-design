@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { PageIntro } from "@/components/site/PageIntro";
-import { DesignProcess } from "@/components/process/DesignProcess";
 import { absoluteUrl } from "@/lib/site";
+import { ProcessContent } from "@/components/pages/ProcessContent";
 
 export const metadata: Metadata = {
   title: "Our Process",
@@ -12,25 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function ProcessPage() {
-  return (
-    <PageIntro
-      eyebrow="Process"
-      title={
-        <>
-          How we <em className="italic">work</em>
-        </>
-      }
-      lead="Seven considered stages carry every project from first conversation to final handover — keeping you informed and the outcome faithful to the vision."
-    >
-      <div className="mt-16">
-        <DesignProcess />
-      </div>
-
-      <div className="mt-20 text-center">
-        <Link href="/contact" className="btn btn-dark">
-          Start your project
-        </Link>
-      </div>
-    </PageIntro>
-  );
+  return <ProcessContent />;
 }

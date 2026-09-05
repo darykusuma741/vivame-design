@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { site } from "@/lib/site";
-import { services } from "@/lib/content";
+import { useI18n } from "@/components/i18n/LanguageProvider";
 
 interface FormValues {
   name: string;
@@ -17,10 +17,11 @@ const inputClass =
   "w-full border border-line bg-paper px-4 py-3 text-sm text-ink transition-colors placeholder:text-faint focus:border-ink focus:outline-none";
 
 export function ContactForm() {
+  const { t, services } = useI18n();
   const [values, setValues] = useState<FormValues>({
     name: "",
     contact: "",
-    service: "General inquiry",
+    service: "general",
     message: "",
   });
   const [errors, setErrors] = useState<Errors>({});
@@ -32,13 +33,11 @@ export function ContactForm() {
 
   function validate(): Errors {
     const next: Errors = {};
-    if (!values.name.trim()) next.name = "Please enter your name.";
-    if (!values.contact.trim())
-      next.contact = "Please add a phone number or email.";
-    if (!values.message.trim())
-      next.message = "Please tell us a little about your project.";
+    if (!values.name.trim()) next.name = t("form.err.name");
+    if (!values.contact.trim()) next.contact = t("form.err.contact");
+    if (!values.message.trim()) next.message = t("form.err.message");
     else if (values.message.trim().length < 10)
-      next.message = "A little more detail helps us respond better.";
+      next.message = t("form.err.messageShort");
     return next;
   }
 
@@ -48,12 +47,17 @@ export function ContactForm() {
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
+    const serviceLabel =
+      values.service === "general"
+        ? t("form.service.general")
+        : services.find((s) => s.slug === values.service)?.title ?? values.service;
+
     const message = [
-      "Hello VIVAME Design,",
+      t("form.greeting"),
       "",
-      `Name: ${values.name}`,
-      `Contact: ${values.contact}`,
-      `Service: ${values.service}`,
+      `${t("form.nameLabel")} ${values.name}`,
+      `${t("form.contactLabel")} ${values.contact}`,
+      `${t("form.serviceLabel")} ${serviceLabel}`,
       "",
       values.message,
     ].join("\n");
@@ -69,7 +73,7 @@ export function ContactForm() {
           htmlFor="cf-name"
           className="mb-2 block text-[0.7rem] font-medium uppercase tracking-[0.18em] text-ink"
         >
-          Name
+          {t("form.name")}
         </label>
         <input
           id="cf-name"
@@ -80,7 +84,7 @@ export function ContactForm() {
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? "cf-name-error" : undefined}
           className={inputClass}
-          placeholder="Your name"
+          placeholder={t("form.name.placeholder")}
         />
         {errors.name && (
           <p id="cf-name-error" className="mt-2 text-xs text-red-700">
@@ -94,7 +98,7 @@ export function ContactForm() {
           htmlFor="cf-contact"
           className="mb-2 block text-[0.7rem] font-medium uppercase tracking-[0.18em] text-ink"
         >
-          Phone or email
+          {t("form.contact")}
         </label>
         <input
           id="cf-contact"
@@ -105,7 +109,7 @@ export function ContactForm() {
           aria-invalid={!!errors.contact}
           aria-describedby={errors.contact ? "cf-contact-error" : undefined}
           className={inputClass}
-          placeholder="How can we reach you?"
+          placeholder={t("form.contact.placeholder")}
         />
         {errors.contact && (
           <p id="cf-contact-error" className="mt-2 text-xs text-red-700">
@@ -119,7 +123,7 @@ export function ContactForm() {
           htmlFor="cf-service"
           className="mb-2 block text-[0.7rem] font-medium uppercase tracking-[0.18em] text-ink"
         >
-          Service
+          {t("form.service")}
         </label>
         <select
           id="cf-service"
@@ -127,9 +131,11 @@ export function ContactForm() {
           onChange={(e) => setField("service", e.target.value)}
           className={inputClass}
         >
-          <option>General inquiry</option>
+          <option value="general">{t("form.service.general")}</option>
           {services.map((service) => (
-            <option key={service.slug}>{service.title}</option>
+            <option key={service.slug} value={service.slug}>
+              {service.title}
+            </option>
           ))}
         </select>
       </div>
@@ -139,7 +145,7 @@ export function ContactForm() {
           htmlFor="cf-message"
           className="mb-2 block text-[0.7rem] font-medium uppercase tracking-[0.18em] text-ink"
         >
-          Your project
+          {t("form.message")}
         </label>
         <textarea
           id="cf-message"
@@ -149,7 +155,7 @@ export function ContactForm() {
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "cf-message-error" : undefined}
           className={`${inputClass} resize-y`}
-          placeholder="Tell us about your space, timeline, and what you're hoping to achieve."
+          placeholder={t("form.message.placeholder")}
         />
         {errors.message && (
           <p id="cf-message-error" className="mt-2 text-xs text-red-700">
@@ -159,12 +165,9 @@ export function ContactForm() {
       </div>
 
       <button type="submit" className="btn btn-dark w-full sm:w-auto">
-        Send via WhatsApp
+        {t("form.submit")}
       </button>
-      <p className="text-xs leading-5 text-faint">
-        Submitting opens WhatsApp with your message pre-filled — nothing is
-        stored on this site.
-      </p>
+      <p className="text-xs leading-5 text-faint">{t("form.note")}</p>
     </form>
   );
 }

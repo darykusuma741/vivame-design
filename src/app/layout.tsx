@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { absoluteUrl, site } from "@/lib/site";
 import { MotionProvider } from "@/components/ui/motion";
+import { LanguageProvider } from "@/components/i18n/LanguageProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -90,7 +91,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </MotionProvider>
       </body>
     </html>
   );
