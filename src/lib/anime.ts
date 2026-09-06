@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { animate, svg } from "animejs";
 
 /**
@@ -101,14 +101,6 @@ export function useDrawIn<T extends HTMLElement = HTMLDivElement>(
 }
 
 export interface StaggerInOptions {
-  /** Per-item stagger in ms. */
-  stagger?: number;
-  /** Animation duration in ms. */
-  duration?: number;
-  /** Initial delay in ms. */
-  delay?: number;
-  /** Starting vertical offset in px (must match the `.stagger-reveal > *` CSS). */
-  translateY?: number;
   /** IntersectionObserver threshold. Keep 0 for tall containers — a % threshold
    *  can never be met when the container is taller than the viewport (e.g. the
    *  mobile single-column portfolio grid). */
@@ -116,54 +108,35 @@ export interface StaggerInOptions {
 }
 
 /**
- * Staggers the direct children of the referenced container into view when it
- * enters the viewport. Pair with the `.stagger-reveal` class on the container
- * (it sets children to `opacity:0; translateY(20px)` so there is no flash before
- * the observer fires). Respects prefers-reduced-motion.
+ * Scroll-triggered staggered reveal for the direct children of the referenced
+ * container. Pair with the `.stagger-reveal` class on the container and add the
+ * returned `inView` as an `.is-visible` class; a CSS transition (plus a
+ * per-child `transition-delay`) does the reveal. CSS transitions are used
+ * instead of a JS animation so the reveal is reliable and never leaves content
+ * stuck hidden. Returns `{ ref, inView }`.
  */
 export function useStaggerIn<T extends HTMLElement = HTMLDivElement>(
   options: StaggerInOptions = {},
   trigger?: unknown,
 ) {
   const ref = useRef<T | null>(null);
-  const {
-    stagger = 70,
-    duration = 650,
-    delay = 0,
-    translateY = 20,
-    threshold = 0,
-  } = options;
+  const [inView, setInView] = useState(false);
+  const { threshold = 0 } = options;
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || prefersReducedMotion()) return;
-    const children = Array.from(el.children) as HTMLElement[];
-    if (!children.length) return;
-
-    let instance: ReturnType<typeof animate> | undefined;
-
-    const run = () => {
-      instance = animate(children, {
-        translateY: [translateY, 0],
-        opacity: [0, 1],
-        duration,
-        delay: (_el, i) => delay + (i ?? 0) * stagger,
-        ease: "outExpo",
-      });
-    };
+    if (!el) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      run();
-      return () => {
-        instance?.pause();
-      };
+      const id = requestAnimationFrame(() => setInView(true));
+      return () => cancelAnimationFrame(id);
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            run();
+            setInView(true);
             observer.disconnect();
             break;
           }
@@ -173,11 +146,8 @@ export function useStaggerIn<T extends HTMLElement = HTMLDivElement>(
     );
     observer.observe(el);
 
-    return () => {
-      observer.disconnect();
-      instance?.pause();
-    };
-  }, [stagger, duration, delay, translateY, threshold, trigger]);
+    return () => observer.disconnect();
+  }, [threshold, trigger]);
 
-  return ref;
+  return { ref, inView };
 }

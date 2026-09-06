@@ -13,7 +13,7 @@ export function PortfolioGrid() {
     active === "All"
       ? projects
       : projects.filter((p) => p.category === active);
-  const gridRef = useStaggerIn<HTMLDivElement>({ stagger: 60, duration: 600 }, active);
+  const { ref: gridRef, inView } = useStaggerIn<HTMLDivElement>({}, active);
 
   const labelFor = (category: string) =>
     category === "All"
@@ -51,10 +51,16 @@ export function PortfolioGrid() {
 
       <div
         ref={gridRef}
-        className="stagger-reveal mt-10 columns-1 gap-8 sm:columns-2 lg:columns-3"
+        className={`stagger-reveal ${
+          inView ? "is-visible" : ""
+        } mt-10 columns-1 gap-8 sm:columns-2 lg:columns-3`}
       >
-        {filtered.map((project) => (
-          <div key={project.slug} className="mb-8 break-inside-avoid">
+        {filtered.map((project, i) => (
+          <div
+            key={project.slug}
+            className="mb-8 break-inside-avoid"
+            style={{ transitionDelay: `${(i % 6) * 60}ms` }}
+          >
             <ProjectCard project={project} />
           </div>
         ))}

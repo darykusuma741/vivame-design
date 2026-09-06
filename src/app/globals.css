@@ -219,10 +219,18 @@
     transform: none;
   }
 
-  /* Stagger reveal — initial hidden state; Anime.js (useStaggerIn) animates in. */
+  /* Stagger reveal — initial hidden state; `.is-visible` (added by useStaggerIn)
+     triggers the CSS transition in. */
   .stagger-reveal > * {
     opacity: 0;
     transform: translateY(20px);
+    transition:
+      opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .stagger-reveal.is-visible > * {
+    opacity: 1;
+    transform: none;
   }
 
   @keyframes step-enter {
