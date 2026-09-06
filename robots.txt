@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://darykusuma741.github.io/vivame-design/sitemap.xml
