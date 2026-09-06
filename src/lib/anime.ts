@@ -109,7 +109,9 @@ export interface StaggerInOptions {
   delay?: number;
   /** Starting vertical offset in px (must match the `.stagger-reveal > *` CSS). */
   translateY?: number;
-  /** IntersectionObserver threshold. */
+  /** IntersectionObserver threshold. Keep 0 for tall containers — a % threshold
+   *  can never be met when the container is taller than the viewport (e.g. the
+   *  mobile single-column portfolio grid). */
   threshold?: number;
 }
 
@@ -129,7 +131,7 @@ export function useStaggerIn<T extends HTMLElement = HTMLDivElement>(
     duration = 650,
     delay = 0,
     translateY = 20,
-    threshold = 0.1,
+    threshold = 0,
   } = options;
 
   useEffect(() => {
